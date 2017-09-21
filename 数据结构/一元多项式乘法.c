@@ -51,26 +51,8 @@ void Attach(int c,int e,Polynomial *rear){
     P->exponent=e;
     P->next=NULL;
     (*rear)->next=P;
-    *rear=p;
+    *rear=P;                                        //保证rear是最后一个结点，这样才能让接下来的数据接在队尾
 }
-
-Polynomial MultPoly(Polynomial P1, Polynomial P2){
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 Polynomial MultPoly(Polynomial P1, Polynomial P2)
 {
