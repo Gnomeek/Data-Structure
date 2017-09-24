@@ -3,8 +3,8 @@ package chap4_6;
 public class Stringwastetime {
     public static void main(String[] args) {
         long beforeTime = System.currentTimeMillis();
-        StringTest();
-        StringBufferTest();
+        //StringTest();
+        //StringBufferTest();
         StringBuilderTest();
         long afterTime = System.currentTimeMillis();
         System.out.println("time: " + (afterTime - beforeTime));
