@@ -158,7 +158,15 @@ AvlTree AvlTree_Delete(ElementType x,AvlTree T){
     return T;
 }
 
-
+/*寻找结点*/
+AvlTree AvlTree_Find(ElementType x,AvlTree T){
+    if(x==T->element||T==NULL)
+        return T;
+    else if(x<T->element)
+        return AvlTree_Find(x,T->left);
+    else
+        return AvlTree_Find(x,T->right);
+}
 
 
 
