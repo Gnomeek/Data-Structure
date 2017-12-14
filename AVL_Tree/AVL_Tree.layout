@@ -4,18 +4,20 @@
 	<ActiveTarget name="Debug" />
 	<File name="main.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1109" topLine="13" />
+			<Cursor1 position="4652" topLine="33" />
 		</Cursor>
 		<Folding>
-			<Collapse line="13" />
 			<Collapse line="21" />
 			<Collapse line="29" />
 			<Collapse line="34" />
 			<Collapse line="43" />
+			<Collapse line="52" />
+			<Collapse line="62" />
+			<Collapse line="72" />
 			<Collapse line="78" />
 			<Collapse line="84" />
 			<Collapse line="116" />
 		</Folding>
 	</File>
-	<EditorTabsLayout layout="0d03c6185a2e695f00003d0400000002=*0;AVL_Tree:main.c@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=877;besth=394;minw=877;minh=394;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0d03c6185a2e695f00003d0400000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+	<EditorTabsLayout layout="0d9ac2785a3142a30000378e00000002=*0;AVL_Tree:main.c@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=877;besth=394;minw=877;minh=394;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0d9ac2785a3142a30000378e00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>
