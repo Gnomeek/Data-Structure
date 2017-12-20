@@ -98,10 +98,11 @@ AvlTree AvlTree_Create(ElementType x,AvlNode *left,AvlNode *right){
 /*插入结点*/
 AvlTree AvlTree_Insert(ElementType x,AvlTree T){
     if(NULL==T){
-        T=(AvlTree)malloc(sizeof(AvlNode));
-        T->element=x;
-        T->height=0;
-        T->left=T->right=NULL;
+        T=AvlTree_Create(x,NULL,NULL);
+        if(NULL==T){
+            printf("ERROR\n");
+            return NULL;
+        }
     }
     else if(x<T->element){
         T->left=AvlTree_Insert(x,T->left);
@@ -112,12 +113,10 @@ AvlTree AvlTree_Insert(ElementType x,AvlTree T){
                 T=DoubleRotate_Left(T);     //LR情况,先左旋再右旋
         }
     }
-    else if(x=T->element)
-        return T;
     else if(x>T->element){
         T->right=AvlTree_Insert(x,T->right);
         if(AvlTree_Height(T->right)-AvlTree_Height(T->left)==2){
-            if(x>T->left->element)
+            if(x>T->right->element)
                 T=SingleRotate_Right(T);     //RR情况，左旋
             else
                 T=DoubleRotate_Right(T);     //RL情况，先右旋再左旋
@@ -184,10 +183,8 @@ AvlTree AvlTree_Find(ElementType x,AvlTree T){
 
 /*先序遍历*/
 Status AvlTree_PreOrderTraverse(AvlTree T){
-    if(NULL==T)
-        return OK;
     if(T!=NULL){
-        printf("%d",T->element);
+        printf("%d ",T->element);
         AvlTree_PreOrderTraverse(T->left);
         AvlTree_PreOrderTraverse(T->right);
     }
@@ -195,23 +192,19 @@ Status AvlTree_PreOrderTraverse(AvlTree T){
 
 /*中序遍历*/
 Status AvlTree_InOrderTraverse(AvlTree T){
-    if(NULL==T)
-        return OK;
     if(T!=NULL){
         AvlTree_PreOrderTraverse(T->left);
-        printf("%d",T->element);
+        printf("%d ",T->element);
         AvlTree_PreOrderTraverse(T->right);
     }
 }
 
 /*后序遍历*/
 Status AvlTree_PostOrderTraverse(AvlTree T){
-    if(NULL==T)
-        return OK;
     if(T!=NULL){
         AvlTree_PreOrderTraverse(T->left);
         AvlTree_PreOrderTraverse(T->right);
-        printf("%d",T->element);
+        printf("%d ",T->element);
     }
 }
 
@@ -248,7 +241,7 @@ int main(){
     int arr[16]= {3,2,1,4,5,6,7,16,15,14,13,12,11,10,8,9};
     printf("== 高度: %d\n", AvlTree_Height(root));
     printf("== 依次添加: ");
-    int ilen = 15;
+    int ilen = 16;
     for(i=0; i<ilen; i++)
     {
         printf("%d ", arr[i]);
