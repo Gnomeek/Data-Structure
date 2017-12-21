@@ -81,6 +81,16 @@ AvlTree DoubleRotate_Right(AvlTree T3){
     return SingleRotate_Right(T3);
 }
 
+/*寻找结点*/
+AvlTree AvlTree_Find(ElementType x,AvlTree T){
+    if(x==T->element||T==NULL)
+        return T;
+    else if(x<T->element)
+        return AvlTree_Find(x,T->left);
+    else
+        return AvlTree_Find(x,T->right);
+}
+
 /*创建结点*/
 AvlTree AvlTree_Create(ElementType x,AvlNode *left,AvlNode *right){
     AvlTree p;
@@ -127,38 +137,41 @@ AvlTree AvlTree_Insert(ElementType x,AvlTree T){
 }
 
 /*删除结点*/
-AvlTree AvlTree_Delete(ElementType x,AvlTree T){
-    if(NULL==T)
+AvlTree Delete(AvlTree X,AvlTree T){
+    if(NULL==T||NULL==X)
         return NULL;
-    if(x<T->element){
-        T->left=AvlTree_Delete(x,T->left);
+    if(X->element<T->element){
+        T->left=Delete(X,T->left);
         if(AvlTree_Height(T->right)-AvlTree_Height(T->left)==2){
-            if(AvlTree_Height(T->left->left) > AvlTree_Height(T->left->right))
+        	AvlTree R=T->right;
+            if(AvlTree_Height(R->left) > AvlTree_Height(R->right))
                 T=DoubleRotate_Right(T);
             else
                 T=SingleRotate_Right(T);
         }
     }
-    else if(x>T->element){
-        T->right=AvlTree_Delete(x,T->right);
+    else if(X->element>T->element){
+        T->right=Delete(X,T->right);
         if(AvlTree_Height(T->left)-AvlTree_Height(T->right)==2){
-            if(AvlTree_Height(T->right->right) > AvlTree_Height(T->right->left))
+        	AvlTree L=T->left;
+            if(AvlTree_Height(L->right) > AvlTree_Height(L->left))
                 T=DoubleRotate_Left(T);
             else
                 T=DoubleRotate_Left(T);
         }
     }
+
     else{
         if((T->left!=NULL)&&(T->right!=NULL)){
             if(AvlTree_Height(T->left)>AvlTree_Height(T->right)){
                 AvlTree Max=AvlTree_Max(T->left);
                 T->element=Max->element;
-                T->left=AvlTree_Delete(Max->element,T->left);
+                T->left=Delete(Max,T->left);
             }
             else{
                 AvlTree Min=AvlTree_Min(T->right);
                 T->element=Min->element;
-                T->right=AvlTree_Delete(Min->element,T->right);
+                T->right=Delete(Min,T->right);
             }
         }
         else{
@@ -167,19 +180,17 @@ AvlTree AvlTree_Delete(ElementType x,AvlTree T){
             free(temp);
         }
     }
-    T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;
+    //T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;
     return T;
 }
 
-/*寻找结点*/
-AvlTree AvlTree_Find(ElementType x,AvlTree T){
-    if(x==T->element||T==NULL)
-        return T;
-    else if(x<T->element)
-        return AvlTree_Find(x,T->left);
-    else
-        return AvlTree_Find(x,T->right);
+AvlTree AvlTree_Delete(ElementType x,AvlTree T){
+    AvlTree N=AvlTree_Find(x,T);
+    if(N)
+        T=Delete(N,T);
+    return T;
 }
+
 
 /*先序遍历*/
 Status AvlTree_PreOrderTraverse(AvlTree T){
@@ -265,7 +276,7 @@ int main(){
     AvlTree_Print(root, root->element, 0);
 
 
-    int j = 8;
+    int j = 7;
     printf("\n== 删除根节点: %d", j);
     root = AvlTree_Delete(j,root);
 
@@ -278,4 +289,5 @@ int main(){
     // 销毁二叉树
     AvlTree_Destroy(root);
 }
+
 
