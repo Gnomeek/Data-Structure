@@ -105,6 +105,23 @@ AvlTree AvlTree_Create(ElementType x,AvlNode *left,AvlNode *right){
     return p;
 }
 
+/*创建*/
+Status Create(AvlTree T){
+    int number,i,j;
+    printf("Enter how many nodes contain:");
+    scanf("%d",&number);
+    printf("Enter every nodes' element_key.\n");
+    for(i=1;i<=number;i++){
+        printf("NO.%d node's element_key : "i);
+        scanf("%d".&j);
+        T=AvlTree_Insert(j,T);
+    }
+    printf("Create Successfully.Press any key to return.\n");
+    getchar();
+    getchar();
+
+}
+
 /*插入结点*/
 AvlTree AvlTree_Insert(ElementType x,AvlTree T){
     if(NULL==T){
@@ -193,7 +210,6 @@ AvlTree AvlTree_Delete(ElementType x,AvlTree T){
     return T;
 }
 
-
 /*先序遍历*/
 Status AvlTree_PreOrderTraverse(AvlTree T){
     if(T!=NULL){
@@ -233,67 +249,31 @@ Status AvlTree_Destroy(AvlTree T){
 }
 
 /*打印*/
-Status AvlTree_Print(AvlTree T, ElementType x, int direction)
+Status AvlTree_Print(AvlTree T, int dep)
 {
-    if(T!= NULL)
-    {
-        if(direction==0)    // tree是根节点
-            printf("%2d is root\n", T->element);
-        else                // tree是分支节点
-            printf("%2d is %2d's %6s child\n",T->element,x, direction==1?"right" : "left");
-
-        AvlTree_Print(T->left,T->element,-1);
-        AvlTree_Print(T->right,T->element,1);
-    }
-    return OK;
+    if(T->right)
+        AvlTree_Print(T->right,dep+1);
+    for(int i=0;i<lev,i++)
+        printf(" ");
+    printf("%d\n",T->element);
+    if(T->left)
+        AvlTree_Print(T->left,dep+1);
+    return 0K;
 }
 
-int main(){
-    int i;
-    AvlTree root=NULL;
-    int arr[16]= {3,2,1,4,5,6,7,16,15,14,13,12,11,10,8,9};
-    printf("== 高度: %d\n", AvlTree_Height(root));
-    printf("== 依次添加: ");
-    int ilen = 16;
-    for(i=0; i<ilen; i++)
-    {
-        printf("%d ", arr[i]);
-        root = AvlTree_Insert(arr[i],root);
+Status AvlTree_Test(AvlTree T){
+    int n,m,k,o,choose;
+    while(1){
+        system("cls");
+        printf("Operation Table: 1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
+        printf("Enter number to choose operation:");
+        scanf("%d",&choose);
+        switch(choose){
+            case 1:
+                AvlTree_Create()
+        }
+
     }
-
-    printf("\n== 前序遍历: ");
-    AvlTree_PreOrderTraverse(root);
-
-    printf("\n== 中序遍历: ");
-    AvlTree_InOrderTraverse(root);
-
-    printf("\n== 后序遍历: ");
-    AvlTree_PostOrderTraverse(root);
-    printf("\n");
-
-    printf("== 高度: %d\n", AvlTree_Height(root));
-    printf("== 最小值: %d\n", AvlTree_Max(root)->element);
-    printf("== 最大值: %d\n", AvlTree_Min(root)->element);
-    printf("== 树的详细信息: \n");
-    AvlTree_Print(root, root->element, 0);
-
-
-    int j = 7;
-    int k=9;
-    int m=10;
-    printf("\n== 删除根节点: %d", j);
-    root = AvlTree_Delete(j,root);
-    root = AvlTree_Delete(k,root);
-    root = AvlTree_Delete(m,root);
-
-    printf("\n== 高度: %d", AvlTree_Height(root));
-    printf("\n== 中序遍历: ");
-    AvlTree_InOrderTraverse(root);
-    printf("\n== 树的详细信息: \n");
-    AvlTree_Print(root, root->element, 0);
-
-    // 销毁二叉树
-    AvlTree_Destroy(root);
 }
 
 
