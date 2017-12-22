@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <malloc.h>
+#include <stdlib.h>
 
 #define OVERFLOW -1
 #define OK 1
@@ -105,23 +106,6 @@ AvlTree AvlTree_Create(ElementType x,AvlNode *left,AvlNode *right){
     return p;
 }
 
-/*创建*/
-Status Create(AvlTree T){
-    int number,i,j;
-    printf("Enter how many nodes contain:");
-    scanf("%d",&number);
-    printf("Enter every nodes' element_key.\n");
-    for(i=1;i<=number;i++){
-        printf("NO.%d node's element_key : "i);
-        scanf("%d".&j);
-        T=AvlTree_Insert(j,T);
-    }
-    printf("Create Successfully.Press any key to return.\n");
-    getchar();
-    getchar();
-
-}
-
 /*插入结点*/
 AvlTree AvlTree_Insert(ElementType x,AvlTree T){
     if(NULL==T){
@@ -160,8 +144,7 @@ AvlTree Delete(AvlTree X,AvlTree T){
     if(X->element<T->element){
         T->left=Delete(X,T->left);
         if(AvlTree_Height(T->right)-AvlTree_Height(T->left)==2){
-        	AvlTree R=T->right;
-            if(AvlTree_Height(R->left) > AvlTree_Height(R->right))
+            if(AvlTree_Height(T->right->left) > AvlTree_Height(T->right->right))
                 T=DoubleRotate_Right(T);
             else
                 T=SingleRotate_Right(T);
@@ -170,14 +153,12 @@ AvlTree Delete(AvlTree X,AvlTree T){
     else if(X->element>T->element){
         T->right=Delete(X,T->right);
         if(AvlTree_Height(T->left)-AvlTree_Height(T->right)==2){
-        	AvlTree L=T->left;
-            if(AvlTree_Height(L->right) > AvlTree_Height(L->left))
+            if(AvlTree_Height(T->left->right) > AvlTree_Height(T->left->left))
                 T=DoubleRotate_Left(T);
             else
                 T=DoubleRotate_Left(T);
         }
     }
-
     else{
         if((T->left!=NULL)&&(T->right!=NULL)){
             if(AvlTree_Height(T->left)>AvlTree_Height(T->right)){
@@ -198,17 +179,17 @@ AvlTree Delete(AvlTree X,AvlTree T){
         }
     }
     if(T)
-        T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;
+		T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;
     return T;
 }
 
-/*删除*/
 AvlTree AvlTree_Delete(ElementType x,AvlTree T){
-    AvlTree N=AvlTree_Find(x,T);
-    if(N)
+    AvlTree N;
+    if((N=AvlTree_Find(x,T))!=NULL)
         T=Delete(N,T);
     return T;
 }
+
 
 /*先序遍历*/
 Status AvlTree_PreOrderTraverse(AvlTree T){
@@ -248,32 +229,90 @@ Status AvlTree_Destroy(AvlTree T){
     free(T);
 }
 
+/*创建*/
+AvlTree Create(AvlTree T){
+    int number,i,j;
+    printf("Enter how many nodes contain:");
+    scanf("%d",&number);
+    printf("Enter every nodes' element_key.\n");
+    for(i=1;i<=number;i++){
+        printf("NO.%d node's element_key : ",i);
+        scanf("%d",&j);
+        T=AvlTree_Insert(j,T);
+    }
+    return T;
+    printf("Create Successfully.Press any key to return.\n");
+    getchar();
+    getchar();
+    //return OK;
+
+}
+
 /*打印*/
 Status AvlTree_Print(AvlTree T, int dep)
 {
+    int i;
     if(T->right)
         AvlTree_Print(T->right,dep+1);
-    for(int i=0;i<lev,i++)
+    for(i=0;i<dep;i++)
         printf(" ");
     printf("%d\n",T->element);
     if(T->left)
         AvlTree_Print(T->left,dep+1);
-    return 0K;
+    return OK;
 }
 
 Status AvlTree_Test(AvlTree T){
-    int n,m,k,o,choose;
+    int n,m,k,choose;
+    AvlTree TEMP;
     while(1){
         system("cls");
+        if(!T)
+            printf("Now this tree is NULL.\n");
+        else
+            AvlTree_Print(T,1);
         printf("Operation Table: 1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
         printf("Enter number to choose operation:");
         scanf("%d",&choose);
         switch(choose){
             case 1:
-                AvlTree_Create()
+                T=Create(T);
+                break;
+            case 2:
+                printf("Enter the element_key you want to insert:");
+				scanf("%d",&n);
+                T=AvlTree_Insert(n,T);
+                break;
+            case 3:
+                printf("Enter the element_key you want to delete:");
+                scanf("%d",&m);
+                T=AvlTree_Delete(m,T);
+                getchar();
+                if(T!=NULL)
+                    printf("Delete %d successfully.\n",&m);
+                else
+                    printf("Delete failed.\n");
+                break;
+            case 4:
+                printf("Enter the element_key you want to find:");
+                scanf("%d",&k);
+                TEMP=AvlTree_Find(k,T);
+                if(TEMP==NULL)
+                    printf("Find %d successfully.\n",k);
+                else
+                    printf("Find failed.\n");
+                break;
+            case 5:
+                AvlTree_Destroy(T);
+                printf("Destroy Successfully.\n");
+                break;
         }
 
     }
 }
 
+int main(){
+    AvlTree T=NULL;
+    AvlTree_Test(T);
+}
 
