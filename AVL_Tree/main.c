@@ -180,10 +180,12 @@ AvlTree Delete(AvlTree X,AvlTree T){
             free(temp);
         }
     }
-    //T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;
+    if(T)
+        T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;
     return T;
 }
 
+/*删除*/
 AvlTree AvlTree_Delete(ElementType x,AvlTree T){
     AvlTree N=AvlTree_Find(x,T);
     if(N)
@@ -277,8 +279,12 @@ int main(){
 
 
     int j = 7;
+    int k=9;
+    int m=10;
     printf("\n== 删除根节点: %d", j);
     root = AvlTree_Delete(j,root);
+    root = AvlTree_Delete(k,root);
+    root = AvlTree_Delete(m,root);
 
     printf("\n== 高度: %d", AvlTree_Height(root));
     printf("\n== 中序遍历: ");
