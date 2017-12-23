@@ -184,12 +184,16 @@ AvlTree Delete(AvlTree X,AvlTree T){
 }
 
 AvlTree AvlTree_Delete(ElementType x,AvlTree T){
-    AvlTree N;
-    if((N=AvlTree_Find(x,T))!=NULL)
+    AvlTree N=(AvlNode*)malloc(sizeof(AvlNode));
+    N=AvlTree_Find(x,T);
+    if(N!=NULL){
         T=Delete(N,T);
+        printf("Delete %d successfully.\n",x);
+    }
+    else
+        printf("Delete failed.\n");
     return T;
 }
-
 
 /*先序遍历*/
 Status AvlTree_PreOrderTraverse(AvlTree T){
@@ -255,16 +259,16 @@ Status AvlTree_Print(AvlTree T, int dep)
     if(T->right)
         AvlTree_Print(T->right,dep+1);
     for(i=0;i<dep;i++)
-        printf(" ");
+        printf("    ");
     printf("%d\n",T->element);
     if(T->left)
         AvlTree_Print(T->left,dep+1);
     return OK;
 }
 
-Status AvlTree_Test(AvlTree T){
+/*Status AvlTree_Test(AvlTree T){
     int n,m,k,choose;
-    AvlTree TEMP;
+    AvlTree TEMP=(AvlNode*)malloc(sizeof(AvlNode));
     while(1){
         system("cls");
         if(!T)
@@ -278,22 +282,19 @@ Status AvlTree_Test(AvlTree T){
             case 1:
                 T=Create(T);
                 break;
-            case 2:
+            case 2:{
                 printf("Enter the element_key you want to insert:");
 				scanf("%d",&n);
                 T=AvlTree_Insert(n,T);
                 break;
-            case 3:
+        	}
+            case 3:{
                 printf("Enter the element_key you want to delete:");
                 scanf("%d",&m);
                 T=AvlTree_Delete(m,T);
-                getchar();
-                if(T!=NULL)
-                    printf("Delete %d successfully.\n",&m);
-                else
-                    printf("Delete failed.\n");
                 break;
-            case 4:
+            }
+            case 4:{
                 printf("Enter the element_key you want to find:");
                 scanf("%d",&k);
                 TEMP=AvlTree_Find(k,T);
@@ -302,17 +303,27 @@ Status AvlTree_Test(AvlTree T){
                 else
                     printf("Find failed.\n");
                 break;
-            case 5:
+        	}
+            case 5:{
                 AvlTree_Destroy(T);
                 printf("Destroy Successfully.\n");
                 break;
+			}
         }
-
     }
+}*/
+Status AvlTree_Test(AvlTree T){
+	int a[6]={1,2,3,4,5,6};
+	int i;
+	for(i=0;i<=5;i++)
+		T=AvlTree_Insert(a[i],T);
+	AvlTree_Print(T,0);
+	T=AvlTree_Delete(a[5],T);
+	AvlTree_Print(T,0);
 }
 
 int main(){
-    AvlTree T=NULL;
+    AvlTree T=(AvlNode*)malloc(sizeof(AvlNode));
+    T=NULL;
     AvlTree_Test(T);
 }
-
