@@ -20,7 +20,7 @@ typedef struct AvlNode{
 }AvlNode,*AvlTree;
 
 /*求树高*/
-int AvlTree_Height(AvlTree T){
+int AvlTree_Height(AvlTree &T){
     if(NULL==T)
         return 0;
     else
@@ -33,7 +33,7 @@ int MAX(int T1,int T2){
 }
 
 /*寻找最小结点*/
-AvlTree AvlTree_Min(AvlTree T){
+AvlTree AvlTree_Min(AvlTree &T){
     if(NULL==T)
         return NULL;
     while(T->left!=NULL)
@@ -42,7 +42,7 @@ AvlTree AvlTree_Min(AvlTree T){
 }
 
 /*寻找最大结点*/
-AvlTree AvlTree_Max(AvlTree T){
+AvlTree AvlTree_Max(AvlTree &T){
     if(NULL==T)
         return NULL;
     while(T->right!=NULL)
@@ -51,8 +51,9 @@ AvlTree AvlTree_Max(AvlTree T){
 }
 
 /*右旋*/
-AvlTree SingleRotate_Left(AvlTree T2){
-    AvlTree T1=T2->left;
+AvlTree SingleRotate_Left(AvlTree &T2){
+    AvlTree T1=(AvlNode*)malloc(sizeof(AvlNode));
+    T1=T2->left;
     T2->left=T1->right;
     T1->right=T2;
     T2->height=MAX(AvlTree_Height(T2->left),AvlTree_Height(T2->right))+1;
@@ -61,8 +62,9 @@ AvlTree SingleRotate_Left(AvlTree T2){
 }
 
 /*左旋*/
-AvlTree SingleRotate_Right(AvlTree T2){
-    AvlTree T1=T2->right;
+AvlTree SingleRotate_Right(AvlTree &T2){
+    AvlTree T1=(AvlNode*)malloc(sizeof(AvlNode));
+    T1=T2->right;
     T2->right=T1->left;
     T1->left=T2;
     T2->height=MAX(AvlTree_Height(T2->left),AvlTree_Height(T2->right))+1;
@@ -71,25 +73,33 @@ AvlTree SingleRotate_Right(AvlTree T2){
 }
 
 /*先左旋再右旋*/
-AvlTree DoubleRotate_Left(AvlTree T3){
+AvlTree DoubleRotate_Left(AvlTree &T3){
     T3->left=SingleRotate_Right(T3->left);
     return SingleRotate_Left(T3);
 }
 
 /*先右旋再左旋*/
-AvlTree DoubleRotate_Right(AvlTree T3){
+AvlTree DoubleRotate_Right(AvlTree &T3){
     T3->right=SingleRotate_Left(T3->right);
     return SingleRotate_Right(T3);
 }
 
 /*寻找结点*/
-AvlTree AvlTree_Find(ElementType x,AvlTree T){
-    if(x==T->element||T==NULL)
+AvlTree AvlTree_Find(ElementType x,AvlTree &T){
+    while ((T!=NULL)&&(T->element!=x))
+    {
+        if (x<T->element)
+            T=T->left;
+        else
+            T=T->right;
+    }
+    return T;
+    /*if(x==T->element||T==NULL)
         return T;
     else if(x<T->element)
         return AvlTree_Find(x,T->left);
     else
-        return AvlTree_Find(x,T->right);
+        return AvlTree_Find(x,T->right);*/
 }
 
 /*创建结点*/
@@ -107,7 +117,7 @@ AvlTree AvlTree_Create(ElementType x,AvlNode *left,AvlNode *right){
 }
 
 /*插入结点*/
-AvlTree AvlTree_Insert(ElementType x,AvlTree T){
+AvlTree AvlTree_Insert(ElementType x,AvlTree &T){
     if(NULL==T){
         T=AvlTree_Create(x,NULL,NULL);
         if(NULL==T){
@@ -138,13 +148,15 @@ AvlTree AvlTree_Insert(ElementType x,AvlTree T){
 }
 
 /*删除结点*/
-AvlTree Delete(AvlTree X,AvlTree T){
+AvlTree Delete(AvlTree &X,AvlTree &T){
     if(NULL==T||NULL==X)
         return NULL;
     if(X->element<T->element){
         T->left=Delete(X,T->left);
         if(AvlTree_Height(T->right)-AvlTree_Height(T->left)==2){
-            if(AvlTree_Height(T->right->left) > AvlTree_Height(T->right->right))
+            AvlNode *R=(AvlNode*)malloc(sizeof(AvlNode));
+            R=T->right;
+            if(AvlTree_Height(R->left) > AvlTree_Height(R->right))
                 T=DoubleRotate_Right(T);
             else
                 T=SingleRotate_Right(T);
@@ -153,7 +165,9 @@ AvlTree Delete(AvlTree X,AvlTree T){
     else if(X->element>T->element){
         T->right=Delete(X,T->right);
         if(AvlTree_Height(T->left)-AvlTree_Height(T->right)==2){
-            if(AvlTree_Height(T->left->right) > AvlTree_Height(T->left->left))
+            AvlNode *L=(AvlNode*)malloc(sizeof(AvlNode));
+            L=T->left;
+            if(AvlTree_Height(L->right) > AvlTree_Height(L->left))
                 T=DoubleRotate_Left(T);
             else
                 T=DoubleRotate_Left(T);
@@ -162,18 +176,21 @@ AvlTree Delete(AvlTree X,AvlTree T){
     else{
         if((T->left!=NULL)&&(T->right!=NULL)){
             if(AvlTree_Height(T->left)>AvlTree_Height(T->right)){
-                AvlTree Max=AvlTree_Max(T->left);
+                AvlNode *Max=(AvlNode*)malloc(sizeof(AvlNode));
+                Max=AvlTree_Max(T->left);
                 T->element=Max->element;
                 T->left=Delete(Max,T->left);
             }
             else{
-                AvlTree Min=AvlTree_Min(T->right);
+                AvlNode *Min=(AvlNode*)malloc(sizeof(AvlNode));
+                Min=AvlTree_Min(T->right);
                 T->element=Min->element;
                 T->right=Delete(Min,T->right);
             }
         }
         else{
-            AvlTree temp=T;
+            AvlNode *temp=(AvlNode*)malloc(sizeof(AvlNode));
+            temp=T;
             T=T->left ? T->left : T->right;
             free(temp);
         }
@@ -183,7 +200,7 @@ AvlTree Delete(AvlTree X,AvlTree T){
     return T;
 }
 
-AvlTree AvlTree_Delete(ElementType x,AvlTree T){
+AvlTree AvlTree_Delete(ElementType x,AvlTree &T){
     AvlTree N=(AvlNode*)malloc(sizeof(AvlNode));
     N=AvlTree_Find(x,T);
     if(N!=NULL){
@@ -196,7 +213,7 @@ AvlTree AvlTree_Delete(ElementType x,AvlTree T){
 }
 
 /*先序遍历*/
-Status AvlTree_PreOrderTraverse(AvlTree T){
+Status AvlTree_PreOrderTraverse(AvlTree &T){
     if(T!=NULL){
         printf("%d ",T->element);
         AvlTree_PreOrderTraverse(T->left);
@@ -205,7 +222,7 @@ Status AvlTree_PreOrderTraverse(AvlTree T){
 }
 
 /*中序遍历*/
-Status AvlTree_InOrderTraverse(AvlTree T){
+Status AvlTree_InOrderTraverse(AvlTree &T){
     if(T!=NULL){
         AvlTree_PreOrderTraverse(T->left);
         printf("%d ",T->element);
@@ -214,7 +231,7 @@ Status AvlTree_InOrderTraverse(AvlTree T){
 }
 
 /*后序遍历*/
-Status AvlTree_PostOrderTraverse(AvlTree T){
+Status AvlTree_PostOrderTraverse(AvlTree &T){
     if(T!=NULL){
         AvlTree_PreOrderTraverse(T->left);
         AvlTree_PreOrderTraverse(T->right);
@@ -223,7 +240,7 @@ Status AvlTree_PostOrderTraverse(AvlTree T){
 }
 
 /*销毁*/
-Status AvlTree_Destroy(AvlTree T){
+Status AvlTree_Destroy(AvlTree &T){
     if (NULL==T)
         return ERROR;
     if (T->left != NULL)
@@ -234,7 +251,7 @@ Status AvlTree_Destroy(AvlTree T){
 }
 
 /*创建*/
-AvlTree Create(AvlTree T){
+AvlTree Create(AvlTree &T){
     int number,i,j;
     printf("Enter how many nodes contain:");
     scanf("%d",&number);
@@ -253,7 +270,7 @@ AvlTree Create(AvlTree T){
 }
 
 /*合并*/
-void AvlTree_Merge(AvlNode *T1,AvlNode *T2){
+void AvlTree_Merge(AvlNode *&T1,AvlNode *&T2){
     AvlTree_Merge(T1,T2->left);
     AvlTree_Insert(T2->element,T1);
     AvlTree_Merge(T1,T2->right);
@@ -261,7 +278,7 @@ void AvlTree_Merge(AvlNode *T1,AvlNode *T2){
 }
 
 /*打印*/
-Status AvlTree_Print(AvlTree T, int dep){
+Status AvlTree_Print(AvlTree &T, int dep){
     int i;
     if(T->right)
         AvlTree_Print(T->right,dep+1);
@@ -273,15 +290,15 @@ Status AvlTree_Print(AvlTree T, int dep){
     return OK;
 }
 
-/*Status AvlTree_Test(AvlTree T){
+Status AvlTree_Test(AvlTree &T){
     int n,m,k,choose;
-    AvlTree TEMP=(AvlNode*)malloc(sizeof(AvlNode));
+    AvlNode *TEMP=(AvlNode*)malloc(sizeof(AvlNode));
     while(1){
         system("cls");
         if(!T)
             printf("Now this tree is NULL.\n");
         else
-            AvlTree_Print(T,1);
+            AvlTree_Print(T,0);
         printf("Operation Table: 1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
         printf("Enter number to choose operation:");
         scanf("%d",&choose);
@@ -299,16 +316,20 @@ Status AvlTree_Print(AvlTree T, int dep){
                 printf("Enter the element_key you want to delete:");
                 scanf("%d",&m);
                 T=AvlTree_Delete(m,T);
+                getchar();
+                getchar();
                 break;
             }
             case 4:{
                 printf("Enter the element_key you want to find:");
                 scanf("%d",&k);
                 TEMP=AvlTree_Find(k,T);
-                if(TEMP==NULL)
+                if(TEMP!=NULL)
                     printf("Find %d successfully.\n",k);
                 else
                     printf("Find failed.\n");
+                getchar();
+                getchar();
                 break;
         	}
             case 5:{
@@ -318,8 +339,8 @@ Status AvlTree_Print(AvlTree T, int dep){
 			}
         }
     }
-}*/
-Status AvlTree_Test(AvlTree T1,AvlTree T2){
+}
+/*Status AvlTree_Test(AvlTree T1,AvlTree T2){
 	int a[6]={1,2,3,4,5,6};
 	int b[6]={9,10,11,12,13,14};
 	int i;
@@ -332,12 +353,12 @@ Status AvlTree_Test(AvlTree T1,AvlTree T2){
     AvlTree_Print(T2,0);
 	AvlTree_Merge(T1,T2);
 	AvlTree_Print(T1,0);
-}
+}*/
 
 int main(){
-    AvlTree T1=(AvlNode*)malloc(sizeof(AvlNode));
+    AvlNode *T1=(AvlNode*)malloc(sizeof(AvlNode));
     T1=NULL;
     AvlTree T2=(AvlNode*)malloc(sizeof(AvlNode));
     T2=NULL;
-    AvlTree_Test(T1,T2);
+    AvlTree_Test(T1);
 }
