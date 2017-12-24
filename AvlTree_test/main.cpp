@@ -11,13 +11,67 @@
 typedef int Status;
 typedef int ElementType;
 
-/*储存结构声明*/
+/*储存平衡二叉树结构声明*/
 typedef struct AvlNode{
     ElementType element;    //数据域
     struct AvlNode *left;   //左右孩子指针域
     struct AvlNode *right;
     int height;             //树高
 }AvlNode,*AvlTree;
+
+/*存放输入数据的数组结构体*/
+typedef struct ArrayNode{
+    ElementType element;
+    ArrayNode *next;
+}ArrayNode, *Array;
+
+/*链队列结构体*/
+typedef struct LQNode{
+    AvlTree element;
+    struct LQNode *next;
+}LQNode, *QueuePtr;
+
+/*队列结点结构体*/
+typedef struct{
+    QueuePtr front;
+    QueuePtr rear;
+}LQueue;
+
+/*初始化链队列*/
+Status LQueue_Init(LQueue &Q){
+    Q.front = NULL;
+    Q.rear= NULL;
+    return OK;
+}
+
+/*链队列进队操作*/
+Status LQueue_EnQueue(LQueue &Q, AvlTree &T){
+    QueuePtr p=(LQNode*)malloc(sizeof(LQNode));
+    if(NULL==p)
+        return OVERFLOW;
+    p->element=T;
+    p->next=NULL;
+    if(NULL==Q.front)
+        Q.front=p;  //当先队列为空，直接插入空队列
+    else
+        Q.rear->next=p;  //当先队列非空，插在rear后
+    Q.rear=p;            //更新rear
+    return OK;
+}
+
+/*链队列出队操作*/
+Status LQueue_DeQueue(LQueue &Q, AvlTree &T){
+    QueuePtr p;
+    if(NULL==Q.front)
+        return ERROR;//当先队列为空
+    p=Q.front;
+    T=p->element;
+    Q.front=p->next;
+    if(Q.rear==p)
+        Q.rear=NULL;//遍历完了整个队列
+    free(p);
+    return OK;
+}
 
 /*求树高*/
 int AvlTree_Height(AvlTree &T){
@@ -269,13 +323,63 @@ AvlTree Create(AvlTree &T){
 
 }
 
-/*合并*/
-void AvlTree_Merge(AvlNode *&T1,AvlNode *&T2){
-    AvlTree_Merge(T1,T2->left);
-    AvlTree_Insert(T2->element,T1);
-    AvlTree_Merge(T1,T2->right);
-    //return T1;
+Array ChangeTreeToArray(AvlTree &T){
+    Status FLAG=TRUE;
+    ArrayNode *head=NULL;
+    ArrayNode *p=NULL;
+    ArrayNode *q=NULL;
+    if(T==NULL)
+        printf("The Tree is empty.\n");
+    else{
+        LQueue *Q=(LQueue*)malloc(sizeof(LQueue));
+        Q->front=NULL;
+        Q->rear=NULL;
+        AvlTree X=T;
+        p=(ArrayNode*)malloc(sizeof(ArrayNode));
+        p->element=X->element;
+        if(FLAG==TRUE){
+            head=p;
+            q=p;
+            FLAG=FALSE;
+        }
+        else{
+            q->next=p;
+            q=q->next;
+        }
+        LQueue_EnQueue(*Q,X);
+        while(LQueue_DeQueue(*Q,X)){
+            if(X->left!=NULL){
+                p=(ArrayNode*)malloc(sizeof(ArrayNode));
+                p->element=X->left->element;
+                q->next=p;
+                q=q->next;
+                LQueue_EnQueue(*Q,X->left);
+            }
+            if(X->right!=NULL){
+                p=(ArrayNode*)malloc(sizeof(ArrayNode));
+                p->element=X->right->element;
+                q->next=p;
+                q=q->next;
+                LQueue_EnQueue(*Q,X->right);
+            }
+        }
+        if(q!=NULL)
+            q->next=NULL;
+    }
+    return head;
 }
+
+/*合并*/
+AvlTree AvlTree_Merge(AvlTree &T1,AvlTree &T2){
+    ArrayNode *a=(ArrayNode*)malloc(sizeof(ArrayNode));
+    a=ChangeTreeToArray(T2);
+    while(a!=NULL){
+        AvlTree_Insert(a->element,T1);
+        a=a->next;
+    }
+    return T1;
+}
+
 
 /*打印*/
 Status AvlTree_Print(AvlTree &T, int dep){
@@ -290,32 +394,43 @@ Status AvlTree_Print(AvlTree &T, int dep){
     return OK;
 }
 
-Status AvlTree_Test(AvlTree &T){
-    int n,m,k,choose;
+Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
+    int n,m,k,i,j,o,choose,cho;
     AvlNode *TEMP=(AvlNode*)malloc(sizeof(AvlNode));
     while(1){
         system("cls");
-        if(!T)
-            printf("Now this tree is NULL.\n");
+        printf("******************Tree Table**********************\n");
+        printf("\n************************T1************************\n\n");
+        if(!T1)
+            printf("Now T1 is NULL.\n");
         else
-            AvlTree_Print(T,0);
-        printf("Operation Table: 1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
-        printf("Enter number to choose operation:");
+            AvlTree_Print(T1,0);
+        printf("\n************************T2************************\n\n");
+        if(!T2)
+            printf("Now T2 is NULL.\n");
+        else
+            AvlTree_Print(T2,0);
+        printf("\n******************Operation Table*****************\n");
+        printf("\nT1    1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
+        printf("\nT2    6.Create 7.Insert 8.Delete 9.Find 10.Destroy\n");
+        printf("\nT1&T2 11:Merge 12:Split\n");
+        printf("\n******************Console Table*******************\n");
+        printf("\nEnter number to choose operation:");
         scanf("%d",&choose);
         switch(choose){
             case 1:
-                T=Create(T);
+                T1=Create(T1);
                 break;
             case 2:{
                 printf("Enter the element_key you want to insert:");
 				scanf("%d",&n);
-                T=AvlTree_Insert(n,T);
+                T1=AvlTree_Insert(n,T1);
                 break;
         	}
             case 3:{
                 printf("Enter the element_key you want to delete:");
                 scanf("%d",&m);
-                T=AvlTree_Delete(m,T);
+                T1=AvlTree_Delete(m,T1);
                 getchar();
                 getchar();
                 break;
@@ -323,7 +438,7 @@ Status AvlTree_Test(AvlTree &T){
             case 4:{
                 printf("Enter the element_key you want to find:");
                 scanf("%d",&k);
-                TEMP=AvlTree_Find(k,T);
+                TEMP=AvlTree_Find(k,T1);
                 if(TEMP!=NULL)
                     printf("Find %d successfully.\n",k);
                 else
@@ -333,32 +448,73 @@ Status AvlTree_Test(AvlTree &T){
                 break;
         	}
             case 5:{
-                AvlTree_Destroy(T);
-                printf("Destroy Successfully.\n");
+                AvlTree_Destroy(T1);
+                printf("Destroy T1 Successfully.\n");
                 break;
 			}
+			case 6:{
+                T2=Create(T2);
+                break;
+			}
+            case 7:{
+                printf("Enter the element_key you want to insert:");
+				scanf("%d",&i);
+                T1=AvlTree_Insert(i,T2);
+                break;
+        	}
+            case 8:{
+                printf("Enter the element_key you want to delete:");
+                scanf("%d",&j);
+                T1=AvlTree_Delete(j,T2);
+                getchar();
+                getchar();
+                break;
+            }
+            case 9:{
+                printf("Enter the element_key you want to find:");
+                scanf("%d",&o);
+                TEMP=AvlTree_Find(o,T2);
+                if(TEMP!=NULL)
+                    printf("Find %d successfully.\n",o);
+                else
+                    printf("Find failed.\n");
+                getchar();
+                getchar();
+                break;
+        	}
+        	case 10:{
+                AvlTree_Destroy(T2);
+                printf("Destroy T2 Successfully.\n");
+                break;
+        	}
+            case 11:{
+                printf("Merge T1 to T2(case 1)or T2 to T1(case 2)?\n");
+                printf("Enter which case you choose:");
+                scanf("%d",&cho);
+                if(cho==1){
+                    AvlTree_Merge(T2,T1);
+                    T1=NULL;
+                }
+                if(cho==2){
+                    AvlTree_Merge(T1,T2);
+                    T2=NULL;
+                }
+                printf("Merge Successfully.\n");
+                getchar();
+                getchar();
+                break;
+			}
+			/*case 12{
+
+			}*/
         }
     }
 }
-/*Status AvlTree_Test(AvlTree T1,AvlTree T2){
-	int a[6]={1,2,3,4,5,6};
-	int b[6]={9,10,11,12,13,14};
-	int i;
-	for(i=0;i<=5;i++){
-		T1=AvlTree_Insert(a[i],T1);
-        T2=AvlTree_Insert(b[i],T2);
-	}
-	AvlTree_Print(T1,0);
-	printf("\n");
-    AvlTree_Print(T2,0);
-	AvlTree_Merge(T1,T2);
-	AvlTree_Print(T1,0);
-}*/
 
 int main(){
     AvlNode *T1=(AvlNode*)malloc(sizeof(AvlNode));
     T1=NULL;
     AvlTree T2=(AvlNode*)malloc(sizeof(AvlNode));
     T2=NULL;
-    AvlTree_Test(T1);
+    AvlTree_Test(T1,T2);
 }
