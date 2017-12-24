@@ -411,8 +411,8 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
         else
             AvlTree_Print(T2,0);
         printf("\n******************Operation Table*****************\n");
-        printf("\nT1    1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
-        printf("\nT2    6.Create 7.Insert 8.Delete 9.Find 10.Destroy\n");
+        printf("\n T1   1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
+        printf("\n T2   6.Create 7.Insert 8.Delete 9.Find 10.Destroy\n");
         printf("\nT1&T2 11:Merge 12:Split\n");
         printf("\n******************Console Table*******************\n");
         printf("\nEnter number to choose operation:");
