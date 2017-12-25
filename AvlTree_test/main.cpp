@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
 
@@ -140,9 +140,9 @@ AvlTree DoubleRotate_Right(AvlTree &T3){
 
 /*寻找结点*/
 AvlTree AvlTree_Find(ElementType x,AvlTree &T){
-    while ((T!=NULL)&&(T->element!=x))
+    while((T!=NULL)&&(T->element!=x))
     {
-        if (x<T->element)
+        if(x<T->element)
             T=T->left;
         else
             T=T->right;
@@ -205,124 +205,75 @@ AvlTree AvlTree_Insert(ElementType x,AvlTree &T){
 }
 
 /*删除结点*/
-AvlTree AvlTree_Delete(ElementType X,AvlTree &T){
-    if(NULL==T)//空树或待删除结点为空
-        return NULL;
-    if(X<T->element){//待删除结点位于左子树
-        T->left=AvlTree_Delete(X,T->left);
-        if(AvlTree_Height(T->right)-AvlTree_Height(T->left)==2){
-            AvlNode *R=(AvlNode*)malloc(sizeof(AvlNode));
-            R=T->right;
-            if(AvlTree_Height(R->left) > AvlTree_Height(R->right))
-                T=DoubleRotate_Right(T);
-            else
-                T=SingleRotate_Right(T);
-        }
-    }
-    else if(X>T->element){//待删除结点位于右子树
-        T->right=AvlTree_Delete(X,T->right);
-        if(AvlTree_Height(T->left)-AvlTree_Height(T->right)==2){
-            AvlNode *L=(AvlNode*)malloc(sizeof(AvlNode));
-            L=T->left;
-            if(AvlTree_Height(L->right) > AvlTree_Height(L->left))
-                T=DoubleRotate_Left(T);
-            else
-                T=DoubleRotate_Left(T);
-        }
-    }
-    else{                           //待删除结点为根节点
-        if((T->left!=NULL)&&(T->right!=NULL)){
-            if(AvlTree_Height(T->left)>AvlTree_Height(T->right)){
-                AvlNode *Max=(AvlNode*)malloc(sizeof(AvlNode));     //在这种情况下，左子树高于右子树
-                Max=AvlTree_Max(T->left);                           //取左子树中最大的结点作为新的根的替代品
-                T->element=Max->element;                            //找到的这个新根依然满足左子树均小于它且右子树均大于他
-                T->left=AvlTree_Delete(Max->element,T->left);                        //新根的左子树为删除替代品后的原左子树
-            }
-            else{
-                AvlNode *Min=(AvlNode*)malloc(sizeof(AvlNode));     //这种情况下，右子树高于左子树，镜像操作
-                Min=AvlTree_Min(T->right);
-                T->element=Min->element;
-                T->right=AvlTree_Delete(Min->element,T->right);
-            }
-        }
+Status AvlTree_Delete(ElementType X,AvlTree &T){
+    AvlTree pre,post;
+    if(!T)                         //没有找到该结点
+        return FALSE;
+    else if(X==T->element){      //找到结点
+        if(!T->left&&!T->right)  //待删除结点为叶子结点
+            T=NULL;
+        else if(!T->left)          //待删除结点只有右孩子
+            T=T->right;
+        else if(!T->right)         //待删除结点只有左孩子
+            T=T->left;
         else{
-            AvlNode *temp=(AvlNode*)malloc(sizeof(AvlNode));        //在这种情况下，左右子树有一为空
-            temp=T;                                                 //取不为空的那个作为新根
-            T=T->left ? T->left : T->right;
-            free(temp);
+            //当T左子树的高度大于右子树的高度时，用左子树中的最大结点替代根节点，
+            //再将结点pre从树中删除。依然保证删除结点后的树仍为二叉平衡树
+            if (AvlTree_Height(T->left)>AvlTree_Height(T->right)){
+                pre=T->left;
+                while(pre->right)  //寻找前驱结点pre
+                {
+                    pre=pre->right;
+                }
+                T->element=pre->element;    //用pre替换T
+                AvlTree_Delete(pre->element,T->left);//删除pre
+            }
+            //当T右子树的高度大于左子树的高度时，用右子树中的最小结点替代根节点，
+            //再将结点post从树中删除。依然保证删除结点后的树仍为二叉平衡树
+            else{
+                post=T->right;
+                while(post->left)  //寻找后继节点post。
+                    post = post->left;
+                T->element=post->element;   //用post替换T
+                AvlTree_Delete(post->element,T->right);//删除post
+            }
+        }
+        return TRUE;
+    }
+    else if(X < T->element){        //在左子树中递归删除。
+        if (!AvlTree_Delete(X,T->left))
+            return FALSE;
+        else{
+            //删除成功，修改树的高度。
+            T->height = MAX(AvlTree_Height(T->left), AvlTree_Height(T->right)) + 1;
+            //已在T的左子树删除结点X，修正平衡
+            if (-2==AvlTree_Height(T->left)-AvlTree_Height(T->right)){
+                if(AvlTree_Height(T->right->left)>AvlTree_Height(T->right->right))
+                    DoubleRotate_Right(T);
+                else
+                    SingleRotate_Right(T);
+            }
+            return TRUE;
         }
     }
-    if(T)
-		T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;//修正高度
-    return T;
-}
 
-/*AvlTree Delete(AvlTree &X,AvlTree &T){
-    if(NULL==T)//空树或待删除结点为空
-        return NULL;
-    if(X->element<T->element){//待删除结点位于左子树
-        T->left=Delete(X,T->left);
-        if(AvlTree_Height(T->right)-AvlTree_Height(T->left)==2){
-            AvlNode *R=(AvlNode*)malloc(sizeof(AvlNode));
-            R=T->right;
-            if(AvlTree_Height(R->left) > AvlTree_Height(R->right))
-                T=DoubleRotate_Right(T);
-            else
-                T=SingleRotate_Right(T);
-        }
-    }
-    else if(X->element>T->element){//待删除结点位于右子树
-        T->right=Delete(X,T->right);
-        if(AvlTree_Height(T->left)-AvlTree_Height(T->right)==2){
-            AvlNode *L=(AvlNode*)malloc(sizeof(AvlNode));
-            L=T->left;
-            if(AvlTree_Height(L->right) > AvlTree_Height(L->left))
-                T=DoubleRotate_Left(T);
-            else
-                T=DoubleRotate_Left(T);
-        }
-    }
-    else{                           //待删除结点为根节点
-        if((T->left!=NULL)&&(T->right!=NULL)){
-            if(AvlTree_Height(T->left)>AvlTree_Height(T->right)){
-                AvlNode *Max=(AvlNode*)malloc(sizeof(AvlNode));     //在这种情况下，左子树高于右子树
-                Max=AvlTree_Max(T->left);                           //取左子树中最大的结点作为新的根的替代品
-                T->element=Max->element;                            //找到的这个新根依然满足左子树均小于它且右子树均大于他
-                T->left=Delete(Max,T->left);                        //新根的左子树为删除替代品后的原左子树
-            }
-            else{
-                AvlNode *Min=(AvlNode*)malloc(sizeof(AvlNode));     //这种情况下，右子树高于左子树，镜像操作
-                Min=AvlTree_Min(T->right);
-                T->element=Min->element;
-                T->right=Delete(Min,T->right);
-            }
-        }
+    else{                           //在右子树中递归删除
+        if(!AvlTree_Delete(X,T->right))
+            return FALSE;
         else{
-            AvlNode *temp=(AvlNode*)malloc(sizeof(AvlNode));        //在这种情况下，左右子树有一为空
-            temp=T;                                                 //取不为空的那个作为新根
-            T=T->left ? T->left : T->right;
-            free(temp);
+            //删除成功，修改树的高度。
+            T->height = MAX(AvlTree_Height(T->left), AvlTree_Height(T->right)) + 1;
+            //已在T的右子树删除结点X，修正平衡
+            if (2 == AvlTree_Height(T->left) - AvlTree_Height(T->right)){
+                if (AvlTree_Height(T->left->left) > AvlTree_Height(T->left->right))
+                    SingleRotate_Left(T);
+                else
+                    DoubleRotate_Left(T);
+            }
+            return TRUE;
         }
     }
-    if(T)
-		T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;//修正高度
-    return T;
-}*/
-/*AvlTree AvlTree_Delete(ElementType x,AvlTree &T){
-    AvlTree N=(AvlNode*)malloc(sizeof(AvlNode));
-    AvlTree TEMP=(AvlNode*)malloc(sizeof(AvlNode));
-    TEMP=T;
-    N=AvlTree_Find(x,T);
-    if(N!=NULL){
-        T=Delete(N,T);      //查找成功时，delete函数会修正T的
-        printf("Delete %d successfully.\n",x);
-    }
-    else{
-        printf("Delete failed.\n");
-        T=TEMP;             //查找失败时，T和N均置为了NULL，将T=TEMP恢复其初始状态
-    }
-    return T;
-}*/
+}
 
 /*先序遍历*/
 Status AvlTree_PreOrderTraverse(AvlTree &T){
@@ -460,6 +411,7 @@ Status AvlTree_Spilt(AvlTree &T,AvlTree &T1,AvlTree &T2,ElementType x){
     }
     return TRUE;
 }
+
 /*打印*/
 Status AvlTree_Print(AvlTree &T, int dep){
     int i;
@@ -473,9 +425,10 @@ Status AvlTree_Print(AvlTree &T, int dep){
     return OK;
 }
 
+/*测试*/
 Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
     int n,m,k,i,j,o,choose,cho_m,cho_s,x;
-    AvlNode *TEMP=(AvlNode*)malloc(sizeof(AvlNode));
+    AvlTree TEMP=(AvlNode*)malloc(sizeof(AvlNode));
     AvlTree T3=(AvlNode*)malloc(sizeof(AvlNode));
     T3=NULL;
     while(1){
@@ -515,6 +468,13 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
         else{
             printf("******************Tree Shape**********************\n");
             AvlTree_Print(T3,0);
+            printf("****************Tree Traverse*********************\n");
+            printf(" PreOrderTraverse :");
+            AvlTree_PreOrderTraverse(T3);
+            printf("\n  InOrderTraverse :");
+            AvlTree_InOrderTraverse(T3);
+            printf("\nPostOrderTraverse :");
+            AvlTree_PostOrderTraverse(T3);
         }
         printf("\n******************Operation Table*****************\n");
         printf("\n T1   1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
@@ -536,7 +496,7 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
             case 3:{
                 printf("Enter the element_key you want to delete :");
                 scanf("%d",&m);
-                T1=AvlTree_Delete(m,T1);
+                AvlTree_Delete(m,T1);
                 getchar();
                 getchar();
                 break;
@@ -574,7 +534,7 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
             case 8:{
                 printf("Enter the element_key you want to delete :");
                 scanf("%d",&j);
-                T2=AvlTree_Delete(j,T2);
+                AvlTree_Delete(m,T2);
                 getchar();
                 getchar();
                 break;
