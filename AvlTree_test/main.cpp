@@ -205,7 +205,59 @@ AvlTree AvlTree_Insert(ElementType x,AvlTree &T){
 }
 
 /*删除结点*/
-static AvlTree Delete(AvlTree &X,AvlTree &T){
+AvlTree AvlTree_Delete(ElementType X,AvlTree &T){
+    if(NULL==T)//空树或待删除结点为空
+        return NULL;
+    if(X<T->element){//待删除结点位于左子树
+        T->left=AvlTree_Delete(X,T->left);
+        if(AvlTree_Height(T->right)-AvlTree_Height(T->left)==2){
+            AvlNode *R=(AvlNode*)malloc(sizeof(AvlNode));
+            R=T->right;
+            if(AvlTree_Height(R->left) > AvlTree_Height(R->right))
+                T=DoubleRotate_Right(T);
+            else
+                T=SingleRotate_Right(T);
+        }
+    }
+    else if(X>T->element){//待删除结点位于右子树
+        T->right=AvlTree_Delete(X,T->right);
+        if(AvlTree_Height(T->left)-AvlTree_Height(T->right)==2){
+            AvlNode *L=(AvlNode*)malloc(sizeof(AvlNode));
+            L=T->left;
+            if(AvlTree_Height(L->right) > AvlTree_Height(L->left))
+                T=DoubleRotate_Left(T);
+            else
+                T=DoubleRotate_Left(T);
+        }
+    }
+    else{                           //待删除结点为根节点
+        if((T->left!=NULL)&&(T->right!=NULL)){
+            if(AvlTree_Height(T->left)>AvlTree_Height(T->right)){
+                AvlNode *Max=(AvlNode*)malloc(sizeof(AvlNode));     //在这种情况下，左子树高于右子树
+                Max=AvlTree_Max(T->left);                           //取左子树中最大的结点作为新的根的替代品
+                T->element=Max->element;                            //找到的这个新根依然满足左子树均小于它且右子树均大于他
+                T->left=AvlTree_Delete(Max->element,T->left);                        //新根的左子树为删除替代品后的原左子树
+            }
+            else{
+                AvlNode *Min=(AvlNode*)malloc(sizeof(AvlNode));     //这种情况下，右子树高于左子树，镜像操作
+                Min=AvlTree_Min(T->right);
+                T->element=Min->element;
+                T->right=AvlTree_Delete(Min->element,T->right);
+            }
+        }
+        else{
+            AvlNode *temp=(AvlNode*)malloc(sizeof(AvlNode));        //在这种情况下，左右子树有一为空
+            temp=T;                                                 //取不为空的那个作为新根
+            T=T->left ? T->left : T->right;
+            free(temp);
+        }
+    }
+    if(T)
+		T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;//修正高度
+    return T;
+}
+
+/*AvlTree Delete(AvlTree &X,AvlTree &T){
     if(NULL==T)//空树或待删除结点为空
         return NULL;
     if(X->element<T->element){//待删除结点位于左子树
@@ -255,38 +307,8 @@ static AvlTree Delete(AvlTree &X,AvlTree &T){
     if(T)
 		T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;//修正高度
     return T;
-}
-/*AvlTree Delete(AvlTree &X,AvlTree &T){
-    if(!T)
-        return NULL;
-    if(X->element<T->element)
-        T->left=Delete(X,T->left);
-    else if(X->element>T->element)
-        T->right=Delete(X,T->right);
-    else{
-        if(T->left&&T->right){
-            AvlTree TEMP=AvlTree_Min(T->right);
-            T->element=TEMP->element;
-            T->right=Delete(TEMP,T->right);
-            if(AvlTree_Height(T->left)-AvlTree_Height(T->right)==2){
-                if((T->left->right!=NULL)&&AvlTree_Height(T->left->right)>AvlTree_Height(T->left->left))
-                    DoubleRotate_Left(T);
-                else
-                    SingleRotate_Left(T);
-            }
-        }
-        else{
-            AvlTree TEMP=T;
-            T=T->left ? T->left : T->right;
-            free(TEMP);
-        }
-    }
-    if(T)
-        T->height=MAX(AvlTree_Height(T->left),AvlTree_Height(T->right))+1;//修正高度(前提是T不为空)
-    return T;
-}
-*/
-AvlTree AvlTree_Delete(ElementType x,AvlTree &T){
+}*/
+/*AvlTree AvlTree_Delete(ElementType x,AvlTree &T){
     AvlTree N=(AvlNode*)malloc(sizeof(AvlNode));
     AvlTree TEMP=(AvlNode*)malloc(sizeof(AvlNode));
     TEMP=T;
@@ -300,7 +322,7 @@ AvlTree AvlTree_Delete(ElementType x,AvlTree &T){
         T=TEMP;             //查找失败时，T和N均置为了NULL，将T=TEMP恢复其初始状态
     }
     return T;
-}
+}*/
 
 /*先序遍历*/
 Status AvlTree_PreOrderTraverse(AvlTree &T){
@@ -360,6 +382,7 @@ AvlTree Create(AvlTree &T){
 
 }
 
+/*将树转化为数组*/
 Array ChangeTreeToArray(AvlTree &T){
     Status FLAG=TRUE;
     ArrayNode *head=NULL;
@@ -418,7 +441,7 @@ AvlTree AvlTree_Merge(AvlTree &T1,AvlTree &T2){
 }
 
 /*分裂*/
-Status AvlTree_Spilt(AvlTree &T,ElementType x,AvlTree &T1,AvlTree &T2){
+Status AvlTree_Spilt(AvlTree &T,AvlTree &T1,AvlTree &T2,ElementType x){
     ArrayNode *a=(ArrayNode*)malloc(sizeof(ArrayNode));
     a=ChangeTreeToArray(T);
     if(T==NULL)
@@ -453,6 +476,8 @@ Status AvlTree_Print(AvlTree &T, int dep){
 Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
     int n,m,k,i,j,o,choose,cho_m,cho_s,x;
     AvlNode *TEMP=(AvlNode*)malloc(sizeof(AvlNode));
+    AvlTree T3=(AvlNode*)malloc(sizeof(AvlNode));
+    T3=NULL;
     while(1){
         system("cls");
         printf("******************Tree Table**********************\n");
@@ -483,6 +508,13 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
             AvlTree_InOrderTraverse(T2);
             printf("\nPostOrderTraverse :");
             AvlTree_PostOrderTraverse(T2);
+        }
+        printf("\n************************T3************************\n\n");
+        if(!T2)
+            printf("Now T3 is NULL.\n");
+        else{
+            printf("******************Tree Shape**********************\n");
+            AvlTree_Print(T3,0);
         }
         printf("\n******************Operation Table*****************\n");
         printf("\n T1   1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
@@ -542,7 +574,7 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
             case 8:{
                 printf("Enter the element_key you want to delete :");
                 scanf("%d",&j);
-                T1=AvlTree_Delete(j,T2);
+                T2=AvlTree_Delete(j,T2);
                 getchar();
                 getchar();
                 break;
@@ -585,22 +617,16 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
                 break;
 			}
 			case 12:{
-			    AvlTree T3=(AvlNode*)malloc(sizeof(AvlNode));
-			    T3=NULL;
 			    printf("Which Tree you want to spilt,T1(case1) or T2(case2)?\n");
 			    printf("Enter which case you choose :");
 			    scanf("%d",&cho_s);
 			    printf("Enter the spilt key :");
 			    scanf("%d",&x);
 			    if(cho_s==1){
-                    AvlTree_Spilt(T1,x,T3,T2);
-                    T1=T3;
-                    AvlTree_Destroy(T3);
+                    AvlTree_Spilt(T1,T3,T2,x);
 			    }
 			    if(cho_s==2){
-                    AvlTree_Spilt(T2,x,T1,T3);
-                    T2=T3;
-                    AvlTree_Destroy(T3);
+                    AvlTree_Spilt(T2,T1,T3,x);
 			    }
 			    printf("Split Successfully.");
                 getchar();
