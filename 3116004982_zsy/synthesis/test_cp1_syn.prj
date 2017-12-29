@@ -1,0 +1,21 @@
+#add_file options
+add_file -verilog "C:/Actelprj/3116004982_zsy/hdl/HC85.v"
+add_file -verilog "C:/Actelprj/3116004982_zsy/hdl/HC4511.v"
+add_file -verilog "C:/Actelprj/3116004982_zsy/hdl/HC161.v"
+add_file -verilog "C:/Actelprj/3116004982_zsy/component/work/zsy_cp1/zsy_cp1.v"
+add_file -verilog "C:/Actelprj/3116004982_zsy/hdl/test_cp1.v"
+set_option -top_module test_cp1
+
+#device options
+set_option -technology ProASIC3
+set_option -part A3P030
+set_option -vlog_std v2001
+
+#compilation/mapping options
+set_option -symbolic_fsm_compiler true
+#compilation/mapping options
+set_option -frequency 100.000
+
+#simulation options
+impl -active "synthesis"
+project -result_file "C:/Actelprj/3116004982_zsy/synthesis/test_cp1.edn"

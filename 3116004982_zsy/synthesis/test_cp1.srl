@@ -1,0 +1,47 @@
+%%% protect protected_file
+@E
+@ 
+#
+#
+#
+# Created by Synplify Verilog HDL Compiler version comp475rc, Build 060R from Synplicity, Inc.
+# Copyright 1994-2010 Synopsys, Inc. , All rights reserved.
+# Synthesis Netlist written on Wed Dec 28 02:04:16 2016
+#
+#
+#OPTIONS:"|-top|test_cp1|-nram|-fixsmult|-I|C:\\Actelprj\\3116004982_zsy\\synthesis\\|-I|C:\\Actel\\Libero_v9.0\\Synopsys\\synplify_D200912A\\lib|-v2001|-devicelib|C:\\Actel\\Libero_v9.0\\Synopsys\\synplify_D200912A\\lib\\proasic\\proasic3.v|-encrypt|-pro|-ll|2000|-ui|-fid2|-ram|-sharing|on|-autosm|-lib|work|-lib|work|-lib|work|-lib|work|-lib|work"
+#CUR:"C:\\Actel\\Libero_v9.0\\Synopsys\\synplify_D200912A\\bin\\c_ver.exe":1263551932
+#CUR:"C:\\Actel\\Libero_v9.0\\Synopsys\\synplify_D200912A\\lib\\proasic\\proasic3.v":1263776916
+#CUR:"C:\\Actelprj\\3116004982_zsy\\hdl\\HC85.v":1419707219
+#CUR:"C:\\Actelprj\\3116004982_zsy\\hdl\\HC4511.v":1419711473
+#CUR:"C:\\Actelprj\\3116004982_zsy\\hdl\\HC161.v":1414384524
+#CUR:"C:\\Actelprj\\3116004982_zsy\\component\\work\\zsy_cp1\\zsy_cp1.v":1482861840
+#CUR:"C:\\Actelprj\\3116004982_zsy\\hdl\\test_cp1.v":1482858173
+f "C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v"; # file 0
+af .is_verilog 1;
+f "C:\Actelprj\3116004982_zsy\hdl\HC85.v"; # file 1
+af .is_verilog 1;
+f "C:\Actelprj\3116004982_zsy\hdl\HC4511.v"; # file 2
+af .is_verilog 1;
+f "C:\Actelprj\3116004982_zsy\hdl\HC161.v"; # file 3
+af .is_verilog 1;
+f "C:\Actelprj\3116004982_zsy\component\work\zsy_cp1\zsy_cp1.v"; # file 4
+af .is_verilog 1;
+f "C:\Actelprj\3116004982_zsy\hdl\test_cp1.v"; # file 5
+af .is_verilog 1;
+@E
+@ 
+ftell;
+@E@MR@d6::d(::R4cI	FsR#0C0b_O4CRPsFHDoN;
+PHR3#sPCHoDFR
+4;N3PRHP#_CDsHF4oR;P
+NRs3FHNohl"CR00C#_4Ob"N;
+PDR3NuMoNlsN#bR"CFsH8
+";NbPRCFsH8jR.;P
+NR$3#M0_N0sVFl#N0HRxC"sbCH=F8d".R;P
+NR$3#M0_N0sVFlRN0"sbCH=F87;R"
+@bR@4j::44::0.RsRkC0CskRk0sCb;
+Rj@@:44::.4:RDVN#VCRNCD#RDVN#
+C;C
+;
+

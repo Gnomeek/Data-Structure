@@ -1,0 +1,20 @@
+Selecting top level module zsy_cp1
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1864:7:1864:9|Synthesizing module VCC
+
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1283:7:1283:9|Synthesizing module INV
+
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1163:7:1163:9|Synthesizing module GND
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\hdl\HC85.v":1:7:1:10|Synthesizing module HC85
+
+@W: CG296 :"C:\Actelprj\3116004982_zsy\hdl\HC85.v":6:12:6:15|Incomplete sensitivity list - assuming completeness
+@W: CG290 :"C:\Actelprj\3116004982_zsy\hdl\HC85.v":12:16:12:16|Referenced variable I is not in sensitivity list
+@N: CG364 :"C:\Actelprj\3116004982_zsy\hdl\HC4511.v":1:7:1:12|Synthesizing module HC4511
+
+@N: CG179 :"C:\Actelprj\3116004982_zsy\hdl\HC4511.v":13:11:13:11|Removing redundant assignment
+@W: CL118 :"C:\Actelprj\3116004982_zsy\hdl\HC4511.v":8:8:8:9|Latch generated from always block for signal Y[6:0], probably caused by a missing assignment in an if or case stmt
+@N: CG364 :"C:\Actelprj\3116004982_zsy\hdl\HC161.v":1:7:1:11|Synthesizing module HC161
+
+@N: CG179 :"C:\Actelprj\3116004982_zsy\hdl\HC161.v":15:12:15:12|Removing redundant assignment
+@N: CG364 :"C:\Actelprj\3116004982_zsy\component\work\zsy_cp1\zsy_cp1.v":5:7:5:13|Synthesizing module zsy_cp1
+

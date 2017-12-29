@@ -1,0 +1,160 @@
+#Build: Synplify Pro D-2009.12A, Build 040R, Jan 20 2010
+#install: C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A
+#OS: Windows XP 5.1
+#Hostname: WWW-D0CFDACD259
+
+#Implementation: synthesis
+
+#Sun Dec 28 05:08:50 2014
+
+$ Start of Compile
+#Sun Dec 28 05:08:50 2014
+
+Synopsys Verilog Compiler, version comp475rc, Build 060R, built Jan 15 2010
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+@I::"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v"
+@I::"C:\Actelprj\3116004982_zsy\hdl\HC85.v"
+@I::"C:\Actelprj\3116004982_zsy\component\work\compare_8\compare_8.v"
+Verilog syntax check successful!
+Selecting top level module compare_8
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1864:7:1864:9|Synthesizing module VCC
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\hdl\HC85.v":1:7:1:10|Synthesizing module HC85
+
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1163:7:1163:9|Synthesizing module GND
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\component\work\compare_8\compare_8.v":5:7:5:15|Synthesizing module compare_8
+
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sun Dec 28 05:08:50 2014
+
+###########################################################]
+Synopsys Actel Technology Mapper, Version map500act, Build 058R, Built Jan 18 2010 09:16:23
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+Product Version D-2009.12A
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+@N: MF179 :"c:\actelprj\3116004982_zsy\hdl\hc85.v":9:10:9:21|Found 4 bit by 4 bit '<' comparator, 'QAGB16'
+@N: MF179 :"c:\actelprj\3116004982_zsy\hdl\hc85.v":9:10:13:26|Found 4 bit by 4 bit '<' comparator, 'QAGB17'
+@N: MF179 :"c:\actelprj\3116004982_zsy\hdl\hc85.v":9:10:9:21|Found 4 bit by 4 bit '<' comparator, 'QAGB16'
+@N: MF179 :"c:\actelprj\3116004982_zsy\hdl\hc85.v":9:10:13:26|Found 4 bit by 4 bit '<' comparator, 'QAGB17'
+Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Starting Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished preparing to map (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished technology mapping (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+Finished restoring hierarchy (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Writing Analyst data base C:\Actelprj\3116004982_zsy\synthesis\compare_8.srm
+Finished Writing Netlist Databases (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Writing EDIF Netlist and constraint files
+D-2009.12A
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:01s; Memory used current: 55MB peak: 56MB)
+
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sun Dec 28 05:08:52 2014
+#
+
+
+Top view:               compare_8
+Library name:           PA3
+Operating conditions:   COMWC-2 ( T = 70.0, V = 1.42, P = 1.30, tree_type = balanced_tree )
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Wire load model:        proasic3
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |This timing report estimates place and route data. Please look at the place and route timing report for final timing..
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock..
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: NA
+
+
+
+
+
+
+Interface Information 
+*********************
+
+		No IO constraint found 
+
+
+##### END OF TIMING REPORT #####]
+
+--------------------------------------------------------------------------------
+Target Part: A3P030_QFN68_-2
+Report for cell compare_8.verilog
+  Core Cell usage:
+              cell count     area count*area
+             AND2A     4      1.0        4.0
+              AO1D     4      1.0        4.0
+             AOI1A    12      1.0       12.0
+               GND     3      0.0        0.0
+             NOR2A    16      1.0       16.0
+              NOR3     1      1.0        1.0
+              OR2A    12      1.0       12.0
+              OR3C     1      1.0        1.0
+               VCC     3      0.0        0.0
+              XA1A     1      1.0        1.0
+             XNOR2     3      1.0        3.0
+               XO1     2      1.0        2.0
+              XOR2     2      1.0        2.0
+
+
+                   -----          ----------
+             TOTAL    64                58.0
+
+
+  IO Cell usage:
+              cell count
+             INBUF    16
+            OUTBUF     3
+                   -----
+             TOTAL    19
+
+
+Core Cells         : 58 of 768 (8%)
+IO Cells           : 19 of 83 (23%)
+Mapper successful!
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sun Dec 28 05:08:52 2014
+
+###########################################################]

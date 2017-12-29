@@ -1,0 +1,140 @@
+(DELAYFILE
+(SDFVERSION "OVI 2.1")
+(DESIGN "zsy_cp1")
+(DATE "123")
+(VENDOR "ProASIC3")
+(PROGRAM "Synplify")
+(VERSION "map500act, Build 058R")
+(DIVIDER /)
+(VOLTAGE 2.500000:2.500000:2.500000)
+(PROCESS "TYPICAL")
+(TEMPERATURE 70.000000:70.000000:70.000000)
+(TIMESCALE 1ns)
+(CELL
+  (CELLTYPE "zsy_cp1")
+  (INSTANCE)
+  (TIMINGCHECK
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC85_0/un1_DataA_2_0/A  HC85_0/un1_DataA_2_0/Y  HC85_0/un1_DataA_NE_0/C  HC85_0/un1_DataA_NE_0/Y  HC85_0/un1_DataA_NE/C  HC85_0/un1_DataA_NE/Y  HC161_0/qaux_n3_0_0/S  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC85_0/un1_DataA_2_0/A  HC85_0/un1_DataA_2_0/Y  HC85_0/un1_DataA_NE_0/C  HC85_0/un1_DataA_NE_0/Y  HC85_0/un1_DataA_NE/C  HC85_0/un1_DataA_NE/Y  HC161_0/qaux_n1_0_0/S  HC161_0/qaux_n1_0_0/Y  HC161_0/qaux\[1\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC85_0/un1_DataA_2_0/A  HC85_0/un1_DataA_2_0/Y  HC85_0/un1_DataA_NE_0/C  HC85_0/un1_DataA_NE_0/Y  HC85_0/un1_DataA_NE/C  HC85_0/un1_DataA_NE/Y  HC161_0/qaux_n0_0_0/S  HC161_0/qaux_n0_0_0/Y  HC161_0/qaux\[0\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC85_0/un1_DataA_NE_0/B  HC85_0/un1_DataA_NE_0/Y  HC85_0/un1_DataA_NE/C  HC85_0/un1_DataA_NE/Y  HC161_0/qaux_n3_0_0/S  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC85_0/un1_DataA_NE_0/B  HC85_0/un1_DataA_NE_0/Y  HC85_0/un1_DataA_NE/C  HC85_0/un1_DataA_NE/Y  HC161_0/qaux_n2_0_0/S  HC161_0/qaux_n2_0_0/Y  HC161_0/qaux\[2\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC85_0/un1_DataA_0_0/A  HC85_0/un1_DataA_0_0/Y  HC85_0/un1_DataA_NE/A  HC85_0/un1_DataA_NE/Y  HC161_0/qaux_n3_0_0/S  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC161_0/qaux_n3_0_0_o2/B  HC161_0/qaux_n3_0_0_o2/Y  HC161_0/qaux_n3_0_0_x2/B  HC161_0/qaux_n3_0_0_x2/Y  HC161_0/qaux_n3_0_0/B  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC85_0/un1_DataA_3_0/A  HC85_0/un1_DataA_3_0/Y  HC85_0/un1_DataA_NE/B  HC85_0/un1_DataA_NE/Y  HC161_0/qaux_n3_0_0/S  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC161_0/qaux_n3_0_0_o2/A  HC161_0/qaux_n3_0_0_o2/Y  HC161_0/qaux_n3_0_0_x2/B  HC161_0/qaux_n3_0_0_x2/Y  HC161_0/qaux_n3_0_0/B  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC161_0/qaux_n3_0_0_o2/C  HC161_0/qaux_n3_0_0_o2/Y  HC161_0/qaux_n3_0_0_x2/B  HC161_0/qaux_n3_0_0_x2/Y  HC161_0/qaux_n3_0_0/B  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC161_0/qaux_n2_0_0_x2/A  HC161_0/qaux_n2_0_0_x2/Y  HC161_0/qaux_n2_0_0/B  HC161_0/qaux_n2_0_0/Y  HC161_0/qaux\[2\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC161_0/qaux_n1_0_0_x2/B  HC161_0/qaux_n1_0_0_x2/Y  HC161_0/qaux_n1_0_0/B  HC161_0/qaux_n1_0_0/Y  HC161_0/qaux\[1\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC161_0/qaux_n2_0_0_x2/B  HC161_0/qaux_n2_0_0_x2/Y  HC161_0/qaux_n2_0_0/B  HC161_0/qaux_n2_0_0/Y  HC161_0/qaux\[2\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC161_0/qaux_n1_0_0_x2/A  HC161_0/qaux_n1_0_0_x2/Y  HC161_0/qaux_n1_0_0/B  HC161_0/qaux_n1_0_0/Y  HC161_0/qaux\[1\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC161_0/qaux_n2_0_0_x2/C  HC161_0/qaux_n2_0_0_x2/Y  HC161_0/qaux_n2_0_0/B  HC161_0/qaux_n2_0_0/Y  HC161_0/qaux\[2\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC161_0/qaux_n3_0_0_x2/A  HC161_0/qaux_n3_0_0_x2/Y  HC161_0/qaux_n3_0_0/B  HC161_0/qaux_n3_0_0/Y  HC161_0/qaux\[3\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC161_0/qaux_n0_0_0/B  HC161_0/qaux_n0_0_0/Y  HC161_0/qaux\[0\]/D  	(9.6:9.6:9.6) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC161_0/qaux_n2_0_0_x2/A  HC161_0/qaux_n2_0_0_x2/Y  HC4511_0/SM_8S_1_i_0\[0\]/A  HC4511_0/SM_8S_1_i_0\[0\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC161_0/qaux_n3_0_0_o2/A  HC161_0/qaux_n3_0_0_o2/Y  HC4511_0/SM_8S_1_i_0\[3\]/B  HC4511_0/SM_8S_1_i_0\[3\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_i_a3\[6\]/B  HC4511_0/SM_8S_1_i_i_a3\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_i_a2\[6\]/A  HC4511_0/SM_8S_1_i_i_a2\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_i_a2\[6\]/A  HC4511_0/SM_8S_1_i_i_a2\[6\]/Y  HC4511_0/SM_8S_1_i_i\[6\]/C  HC4511_0/SM_8S_1_i_i\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_i\[4\]/A  HC4511_0/SM_8S_1_i_i\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_0_0\[5\]/A  HC4511_0/SM_8S_1_0_0\[5\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_0_x2\[0\]/B  HC4511_0/SM_8S_1_i_0_x2\[0\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_0_a3_0_1\[1\]/B  HC4511_0/SM_8S_1_i_0_a3_0_1\[1\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_i\[4\]/A  HC4511_0/SM_8S_1_i_i\[4\]/Y  Seg_pad\[4\]/D  Seg_pad\[4\]/PAD  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_0_a3_0\[3\]/C  HC4511_0/SM_8S_1_i_0_a3_0\[3\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_i_0_0\[1\]/B  HC4511_0/SM_8S_1_i_0_0\[1\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_0_i_a3_0_0\[2\]/B  HC4511_0/SM_8S_1_0_i_a3_0_0\[2\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/B  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_0_a3_0\[0\]/B  HC4511_0/SM_8S_1_i_0_a3_0\[0\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[0\]/CLK  HC161_0/qaux\[0\]/Q  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/B  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/Y  HC4511_0/SM_8S_1_0_i\[2\]/B  HC4511_0/SM_8S_1_0_i\[2\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_i_a3\[4\]/A  HC4511_0/SM_8S_1_i_i_a3\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_i_a3\[6\]/C  HC4511_0/SM_8S_1_i_i_a3\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_i_o2\[4\]/B  HC4511_0/SM_8S_1_i_i_o2\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_i_o2\[4\]/B  HC4511_0/SM_8S_1_i_i_o2\[4\]/Y  HC4511_0/SM_8S_1_i_i_x2\[6\]/B  HC4511_0/SM_8S_1_i_i_x2\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_i_o2\[4\]/B  HC4511_0/SM_8S_1_i_i_o2\[4\]/Y  HC4511_0/SM_8S_1_i_i\[4\]/B  HC4511_0/SM_8S_1_i_i\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_i_a3\[4\]/A  HC4511_0/SM_8S_1_i_i_a3\[4\]/Y  HC4511_0/SM_8S_1_i_i\[4\]/C  HC4511_0/SM_8S_1_i_i\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_0_0_o2\[5\]/A  HC4511_0/SM_8S_1_0_0_o2\[5\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_0_0_o2\[5\]/A  HC4511_0/SM_8S_1_0_0_o2\[5\]/Y  HC4511_0/SM_8S_1_0_i_a3_0_0\[2\]/A  HC4511_0/SM_8S_1_0_i_a3_0_0\[2\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_0_a3_0\[1\]/A  HC4511_0/SM_8S_1_i_0_a3_0\[1\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/A  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[1\]/CLK  HC161_0/qaux\[1\]/Q  HC4511_0/SM_8S_1_i_0_a3_0_0\[1\]/A  HC4511_0/SM_8S_1_i_0_a3_0_0\[1\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC4511_0/SM_8S_1_i_i_a3\[4\]/B  HC4511_0/SM_8S_1_i_i_a3\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC4511_0/SM_8S_1_i_i_a3\[6\]/A  HC4511_0/SM_8S_1_i_i_a3\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC4511_0/SM_8S_1_i_i_o2\[4\]/A  HC4511_0/SM_8S_1_i_i_o2\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC4511_0/SM_8S_1_i_0_x2\[0\]/A  HC4511_0/SM_8S_1_i_0_x2\[0\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC4511_0/SM_8S_1_0_0_o2\[5\]/B  HC4511_0/SM_8S_1_0_0_o2\[5\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/C  HC4511_0/SM_8S_1_0_i_a3_0_1\[2\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[2\]/CLK  HC161_0/qaux\[2\]/Q  HC4511_0/SM_8S_1_i_0_a3_0_0\[1\]/C  HC4511_0/SM_8S_1_i_0_a3_0_0\[1\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_0_a3_0\[0\]/C  HC4511_0/SM_8S_1_i_0_a3_0\[0\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_i_a3\[4\]/C  HC4511_0/SM_8S_1_i_i_a3\[4\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_0_i\[2\]/S  HC4511_0/SM_8S_1_0_i\[2\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_i_x2\[6\]/A  HC4511_0/SM_8S_1_i_i_x2\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_0_a3_0_1\[1\]/A  HC4511_0/SM_8S_1_i_0_a3_0_1\[1\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_i_x2\[6\]/A  HC4511_0/SM_8S_1_i_i_x2\[6\]/Y  HC4511_0/SM_8S_1_i_i\[6\]/B  HC4511_0/SM_8S_1_i_i\[6\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_0_a3_0\[3\]/A  HC4511_0/SM_8S_1_i_0_a3_0\[3\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_0\[1\]/B  HC4511_0/SM_8S_1_i_0\[1\]/Y  	(10.0:10.0:10.0) )
+
+    (PATHCONSTRAINT HC161_0/qaux\[3\]/CLK  HC161_0/qaux\[3\]/Q  HC4511_0/SM_8S_1_i_0_a3_0_0\[1\]/B  HC4511_0/SM_8S_1_i_0_a3_0_0\[1\]/Y  	(10.0:10.0:10.0) )
+
+  )
+)
+)

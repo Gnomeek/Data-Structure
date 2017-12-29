@@ -1,0 +1,162 @@
+<html><body><samp><pre>
+<!@TC:1419714530>
+#Build: Synplify Pro D-2009.12A, Build 040R, Jan 20 2010
+#install: C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A
+#OS: Windows XP 5.1
+#Hostname: WWW-D0CFDACD259
+
+#Implementation: synthesis
+
+#Sun Dec 28 05:08:50 2014
+
+<a name=compilerReport1>$ Start of Compile</a>
+#Sun Dec 28 05:08:50 2014
+
+Synopsys Verilog Compiler, version comp475rc, Build 060R, built Jan 15 2010
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+@I::"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v"
+@I::"C:\Actelprj\3116004982_zsy\hdl\HC85.v"
+@I::"C:\Actelprj\3116004982_zsy\component\work\compare_8\compare_8.v"
+Verilog syntax check successful!
+Selecting top level module compare_8
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v:1864:7:1864:10:@N:CG364:@XP_MSG">proasic3.v(1864)</a><!@TM:1419714530> | Synthesizing module VCC
+
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Actelprj\3116004982_zsy\hdl\HC85.v:1:7:1:11:@N:CG364:@XP_MSG">HC85.v(1)</a><!@TM:1419714530> | Synthesizing module HC85
+
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v:1163:7:1163:10:@N:CG364:@XP_MSG">proasic3.v(1163)</a><!@TM:1419714530> | Synthesizing module GND
+
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Actelprj\3116004982_zsy\component\work\compare_8\compare_8.v:5:7:5:16:@N:CG364:@XP_MSG">compare_8.v(5)</a><!@TM:1419714530> | Synthesizing module compare_8
+
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sun Dec 28 05:08:50 2014
+
+###########################################################]
+<a name=mapperReport2>Synopsys Actel Technology Mapper, Version map500act, Build 058R, Built Jan 18 2010 09:16:23</a>
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+Product Version D-2009.12A
+@N:<a href="@N:MF249:@XP_HELP">MF249</a> : <!@TM:1419714532> | Running in 32-bit mode. 
+@N:<a href="@N:MF258:@XP_HELP">MF258</a> : <!@TM:1419714532> | Gated clock conversion disabled  
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+@N:<a href="@N:MF179:@XP_HELP">MF179</a> : <a href="c:\actelprj\3116004982_zsy\hdl\hc85.v:9:10:9:22:@N:MF179:@XP_MSG">hc85.v(9)</a><!@TM:1419714532> | Found 4 bit by 4 bit '<' comparator, 'QAGB16'
+@N:<a href="@N:MF179:@XP_HELP">MF179</a> : <a href="c:\actelprj\3116004982_zsy\hdl\hc85.v:9:10:13:27:@N:MF179:@XP_MSG">hc85.v(9)</a><!@TM:1419714532> | Found 4 bit by 4 bit '<' comparator, 'QAGB17'
+@N:<a href="@N:MF179:@XP_HELP">MF179</a> : <a href="c:\actelprj\3116004982_zsy\hdl\hc85.v:9:10:9:22:@N:MF179:@XP_MSG">hc85.v(9)</a><!@TM:1419714532> | Found 4 bit by 4 bit '<' comparator, 'QAGB16'
+@N:<a href="@N:MF179:@XP_HELP">MF179</a> : <a href="c:\actelprj\3116004982_zsy\hdl\hc85.v:9:10:13:27:@N:MF179:@XP_MSG">hc85.v(9)</a><!@TM:1419714532> | Found 4 bit by 4 bit '<' comparator, 'QAGB17'
+Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Starting Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished preparing to map (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished technology mapping (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+Finished restoring hierarchy (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Writing Analyst data base C:\Actelprj\3116004982_zsy\synthesis\compare_8.srm
+Finished Writing Netlist Databases (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Writing EDIF Netlist and constraint files
+D-2009.12A
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:01s; Memory used current: 55MB peak: 56MB)
+
+
+
+<a name=timingReport3>##### START OF TIMING REPORT #####[</a>
+# Timing Report written on Sun Dec 28 05:08:52 2014
+#
+
+
+Top view:               compare_8
+Library name:           PA3
+Operating conditions:   COMWC-2 ( T = 70.0, V = 1.42, P = 1.30, tree_type = balanced_tree )
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Wire load model:        proasic3
+Paths requested:        5
+Constraint File(s):    
+@N:<a href="@N:MT320:@XP_HELP">MT320</a> : <!@TM:1419714532> | This timing report estimates place and route data. Please look at the place and route timing report for final timing.. 
+
+@N:<a href="@N:MT322:@XP_HELP">MT322</a> : <!@TM:1419714532> | Clock constraints cover only FF-to-FF paths associated with the clock.. 
+
+
+
+<a name=performanceSummary4>Performance Summary </a>
+*******************
+
+
+Worst slack in design: NA
+
+
+
+
+
+
+<a name=interfaceInfo5>Interface Information </a>
+*********************
+
+		No IO constraint found 
+
+
+##### END OF TIMING REPORT #####]
+
+--------------------------------------------------------------------------------
+Target Part: A3P030_QFN68_-2
+<a name=cellreport6>Report for cell compare_8.verilog</a>
+  Core Cell usage:
+              cell count     area count*area
+             AND2A     4      1.0        4.0
+              AO1D     4      1.0        4.0
+             AOI1A    12      1.0       12.0
+               GND     3      0.0        0.0
+             NOR2A    16      1.0       16.0
+              NOR3     1      1.0        1.0
+              OR2A    12      1.0       12.0
+              OR3C     1      1.0        1.0
+               VCC     3      0.0        0.0
+              XA1A     1      1.0        1.0
+             XNOR2     3      1.0        3.0
+               XO1     2      1.0        2.0
+              XOR2     2      1.0        2.0
+
+
+                   -----          ----------
+             TOTAL    64                58.0
+
+
+  IO Cell usage:
+              cell count
+             INBUF    16
+            OUTBUF     3
+                   -----
+             TOTAL    19
+
+
+Core Cells         : 58 of 768 (8%)
+IO Cells           : 19 of 83 (23%)
+Mapper successful!
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sun Dec 28 05:08:52 2014
+
+###########################################################]

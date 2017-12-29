@@ -1,0 +1,155 @@
+#Build: Synplify Pro D-2009.12A, Build 040R, Jan 20 2010
+#install: C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A
+#OS: Windows XP 5.1
+#Hostname: WWW-D0CFDACD259
+
+#Implementation: synthesis
+
+#Sun Dec 28 05:08:38 2014
+
+$ Start of Compile
+#Sun Dec 28 05:08:38 2014
+
+Synopsys Verilog Compiler, version comp475rc, Build 060R, built Jan 15 2010
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+
+@I::"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v"
+@I::"C:\Actelprj\3116004982_zsy\hdl\HC85.v"
+@I::"C:\Actelprj\3116004982_zsy\component\work\compare_8\compare_8.v"
+@I::"C:\Actelprj\3116004982_zsy\hdl\test_compare.v"
+Verilog syntax check successful!
+Selecting top level module test_compare
+@W: CG730 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":3:7:3:18|Top level module test_compare has no ports
+
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1864:7:1864:9|Synthesizing module VCC
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\hdl\HC85.v":1:7:1:10|Synthesizing module HC85
+
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1163:7:1163:9|Synthesizing module GND
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\component\work\compare_8\compare_8.v":5:7:5:15|Synthesizing module compare_8
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":3:7:3:18|Synthesizing module test_compare
+
+@W: CG532 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":8:2:8:8|Initial statement will only initialize memories through the usage of $readmemh and $readmemb. Everything else is ignored
+@W: CG133 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":4:11:4:11|No assignment to a
+@W: CG133 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":4:13:4:13|No assignment to b
+@W: CG133 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":5:11:5:11|No assignment to A
+@W: CG133 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":5:13:5:13|No assignment to B
+@W: CL168 :"C:\Actelprj\3116004982_zsy\hdl\test_compare.v":7:12:7:13|Pruning instance u1 - not in use ...
+
+@END
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sun Dec 28 05:08:38 2014
+
+###########################################################]
+Synopsys Actel Technology Mapper, Version map500act, Build 058R, Built Jan 18 2010 09:16:23
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+Product Version D-2009.12A
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+Finished RTL optimizations (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished factoring (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished gated-clock and generated-clock conversion (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 1 (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Starting Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished Early Timing Optimization (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished generic timing optimizations - Pass 2 (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished preparing to map (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Finished technology mapping (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Finished technology timing optimizations and critical path resynthesis (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+
+Added 0 Buffers
+Added 0 Cells via replication
+	Added 0 Sequential Cells via replication
+	Added 0 Combinational Cells via replication
+Finished restoring hierarchy (Time elapsed 0h:00m:00s; Memory used current: 54MB peak: 56MB)
+
+Writing Analyst data base C:\Actelprj\3116004982_zsy\synthesis\test_compare.srm
+Finished Writing Netlist Databases (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+Writing EDIF Netlist and constraint files
+D-2009.12A
+Finished Writing EDIF Netlist and constraint files (Time elapsed 0h:00m:00s; Memory used current: 55MB peak: 56MB)
+
+
+
+##### START OF TIMING REPORT #####[
+# Timing Report written on Sun Dec 28 05:08:40 2014
+#
+
+
+Top view:               test_compare
+Library name:           PA3
+Operating conditions:   COMWC-2 ( T = 70.0, V = 1.42, P = 1.30, tree_type = balanced_tree )
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Wire load model:        proasic3
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |This timing report estimates place and route data. Please look at the place and route timing report for final timing..
+
+@N: MT322 |Clock constraints cover only FF-to-FF paths associated with the clock..
+
+
+
+Performance Summary 
+*******************
+
+
+Worst slack in design: NA
+
+
+
+
+
+
+Interface Information 
+*********************
+
+		No IO constraint found 
+
+
+##### END OF TIMING REPORT #####]
+
+--------------------------------------------------------------------------------
+Target Part: A3P030_QFN68_-2
+Report for cell test_compare.verilog
+  Core Cell usage:
+              cell count     area count*area
+               GND     1      0.0        0.0
+               VCC     1      0.0        0.0
+
+
+                   -----          ----------
+             TOTAL     2                 0.0
+
+
+  IO Cell usage:
+              cell count
+                   -----
+             TOTAL     0
+
+
+Core Cells         : 0 of 768 (0%)
+IO Cells           : 0 of 83 (0%)
+Mapper successful!
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Sun Dec 28 05:08:40 2014
+
+###########################################################]

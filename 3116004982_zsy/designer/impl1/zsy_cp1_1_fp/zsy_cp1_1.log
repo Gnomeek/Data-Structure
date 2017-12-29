@@ -1,0 +1,24 @@
+FlashPro
+Version: 9.0.0.15
+Release: v9.0
+
+Software Version: 9.0.0.15
+PDB file 'C:\Actelprj\3116004982_zsy\designer\impl1\zsy_cp1_1.pdb' has been loaded successfully.
+DESIGN : zsy_cp1;  CHECKSUM : 9C79;  PDB_VERSION : 1.6
+Driver : 3.0.0 build 1
+programmer '68350' : FlashPro4
+Opened 'C:\Actelprj\3116004982_zsy\designer\impl1\zsy_cp1_1_fp\zsy_cp1_1.pro'
+programmer '68350' : Scan Chain...
+programmer '68350' : Scan Chain PASSED.
+programmer '68350' : Executing action PROGRAM
+programmer '68350' : EXPORT FSN[48] = 00ea592c94a8
+programmer '68350' : Erase ...
+programmer '68350' : Completed erase
+programmer '68350' : Programming FPGA Array
+programmer '68350' : Verifying FPGA Array
+programmer '68350' :         Verifying FPGA Array -- pass
+programmer '68350' : Finished: Wed Dec 28 04:00:25 2016 (Elapsed time 00:01:05)
+programmer '68350' : Executing action PROGRAM PASSED.
+
+                        o - o - o - o - o - o
+

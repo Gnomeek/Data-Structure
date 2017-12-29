@@ -1,0 +1,9 @@
+Selecting top level module compare_8
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1864:7:1864:9|Synthesizing module VCC
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\hdl\HC85.v":1:7:1:10|Synthesizing module HC85
+
+@N: CG364 :"C:\Actel\Libero_v9.0\Synopsys\synplify_D200912A\lib\proasic\proasic3.v":1163:7:1163:9|Synthesizing module GND
+
+@N: CG364 :"C:\Actelprj\3116004982_zsy\component\work\compare_8\compare_8.v":5:7:5:15|Synthesizing module compare_8
+

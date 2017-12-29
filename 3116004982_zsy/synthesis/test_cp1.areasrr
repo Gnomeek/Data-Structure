@@ -1,0 +1,8 @@
+----------------------------------------------------------------------
+Report for cell test_cp1.verilog
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL              2                  0.0

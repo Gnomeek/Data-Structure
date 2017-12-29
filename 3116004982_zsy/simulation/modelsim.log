@@ -1,0 +1,55 @@
+# Reading C:/Actel/Libero_v9.0/Model/tcl/vsim/pref.tcl 
+# do run.do 
+# INFO: Simulation library presynth already exists 
+# Modifying modelsim.ini
+# Modifying modelsim.ini
+# Model Technology ModelSim ACTEL vlog 6.5d Compiler 2009.11 Nov 19 2009
+# -- Compiling module HC85
+# 
+# Top level modules:
+# 	HC85
+# Model Technology ModelSim ACTEL vlog 6.5d Compiler 2009.11 Nov 19 2009
+# -- Compiling module HC4511
+# 
+# Top level modules:
+# 	HC4511
+# Model Technology ModelSim ACTEL vlog 6.5d Compiler 2009.11 Nov 19 2009
+# -- Compiling module HC161
+# 
+# Top level modules:
+# 	HC161
+# Model Technology ModelSim ACTEL vlog 6.5d Compiler 2009.11 Nov 19 2009
+# -- Compiling module zsy_cp1
+# 
+# Top level modules:
+# 	zsy_cp1
+# Model Technology ModelSim ACTEL vlog 6.5d Compiler 2009.11 Nov 19 2009
+# -- Compiling module test
+# 
+# Top level modules:
+# 	test
+# vsim -L proasic3 -L presynth -t 1ps presynth.test 
+# //  ModelSim ACTEL 6.5d Nov 19 2009 
+# //
+# //  Copyright 1991-2009 Mentor Graphics Corporation
+# //              All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND 
+# //  PROPRIETARY INFORMATION WHICH IS THE PROPERTY
+# //  OF MENTOR GRAPHICS CORPORATION OR ITS LICENSORS
+# //  AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading presynth.test
+# Loading presynth.zsy_cp1
+# Loading proasic3.VCC
+# Loading proasic3.INV
+# Loading proasic3.GND
+# Loading presynth.HC85
+# ** Warning: (vsim-3009) [TSCALE] - Module 'HC85' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /test/u_cp1/HC85_0
+# Loading presynth.HC4511
+# ** Warning: (vsim-3009) [TSCALE] - Module 'HC4511' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /test/u_cp1/HC4511_0
+# Loading presynth.HC161
+# ** Warning: (vsim-3009) [TSCALE] - Module 'HC161' does not have a `timescale directive in effect, but previous modules do.
+#         Region: /test/u_cp1/HC161_0

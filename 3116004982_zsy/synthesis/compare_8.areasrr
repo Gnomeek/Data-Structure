@@ -1,0 +1,46 @@
+----------------------------------------------------------------------
+Report for cell compare_8.verilog
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                               HC85         1      32.0       32.0
+                             HC85_1         1      26.0       26.0
+                              INBUF        16       0.0        0.0
+                             OUTBUF         3       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL             23                 58.0
+----------------------------------------------------------------------
+Report for cell HC85_1.netlist
+  Original Cell name HC85
+     Instance path:  HC85_1
+                                          Cell usage:
+                               cell       count     area    count*area
+                              AND2A         2       1.0        2.0
+                              AOI1A         6       1.0        6.0
+                                GND         1       0.0        0.0
+                              NOR2A         8       1.0        8.0
+                               OR2A         6       1.0        6.0
+                                VCC         1       0.0        0.0
+                                XO1         2       1.0        2.0
+                               XOR2         2       1.0        2.0
+                            
+                         TOTAL             28                 26.0
+----------------------------------------------------------------------
+Report for cell HC85.netlist
+     Instance path:  HC85_2
+                                          Cell usage:
+                               cell       count     area    count*area
+                              AND2A         2       1.0        2.0
+                               AO1D         4       1.0        4.0
+                              AOI1A         6       1.0        6.0
+                                GND         1       0.0        0.0
+                              NOR2A         8       1.0        8.0
+                               NOR3         1       1.0        1.0
+                               OR2A         6       1.0        6.0
+                               OR3C         1       1.0        1.0
+                                VCC         1       0.0        0.0
+                               XA1A         1       1.0        1.0
+                              XNOR2         3       1.0        3.0
+                            
+                         TOTAL             34                 32.0

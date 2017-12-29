@@ -1,0 +1,138 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Actelprj\3116004982_zsy\simulation
+vcompare_8
+ID:[>Dm2_C`0mAhE?f8FGh3
+V<i7Nf1PJ3^VTK<YX`C5zA2
+Z1 w1419714550
+Z2 8C:/Actelprj/3116004982_zsy/synthesis/compare_8.v
+Z3 FC:/Actelprj/3116004982_zsy/synthesis/compare_8.v
+L0 193
+Z4 OW;L;6.5d;42
+r1
+31
+Z5 o-work postsynth -O0
+!s100 O35`^jmFPDDSGF2l[Bi5`1
+!s85 0
+!s101 -O0
+vHC161
+IG;<?:zBR5FKOWRY6@Xo<d2
+Vf?g]MW[g8CFWa=XgfKTni2
+Z6 w1482858282
+Z7 8C:/Actelprj/3116004982_zsy/synthesis/zsy_cp1_1.v
+Z8 FC:/Actelprj/3116004982_zsy/synthesis/zsy_cp1_1.v
+L0 73
+R4
+r1
+31
+R5
+n@h@c161
+!s100 R1<JCnKLSLgAL0=3JfZQJ1
+!s85 0
+!s101 -O0
+vHC4511
+INT7?O5aHPTjVZeV5QH5EG2
+VZfbeT<WT:[><5FF?37d:C0
+R6
+R7
+R8
+L0 5
+R4
+r1
+31
+R5
+n@h@c4511
+!s100 NWKN`:d3N2kkK6W@T74FM3
+!s85 0
+!s101 -O0
+vHC85
+ImEbFiS[D9I@If:olz3P6V1
+V4b:B]3N`AD9F_bc@[SFN70
+R6
+R7
+R8
+L0 122
+R4
+r1
+31
+R5
+n@h@c85
+!s100 8@cLI;zf8G]4oA1BogFhL2
+!s85 0
+!s101 -O0
+vHC85_1
+I50GK53[1e;nV7I@lcfBcl1
+VCVQKnHX@^z>XoM>afNN_53
+R1
+R2
+R3
+L0 109
+R4
+r1
+31
+R5
+n@h@c85_1
+!s100 =SP[RB_eFAE[C`V4aH=lY3
+!s85 0
+!s101 -O0
+vtest_compare
+I6I?BO4Lc1TAJ4jN:7fb^l1
+V;MfG`^KUiM4la8RL9<0iK3
+w1419714223
+8C:/Actelprj/3116004982_zsy/stimulus/test_compare.v
+FC:/Actelprj/3116004982_zsy/stimulus/test_compare.v
+L0 3
+R4
+r1
+31
+R5
+!s92 +incdir+C:/Actelprj/3116004982_zsy/stimulus -work postsynth -O0
+!s100 `6Fb7_9j]68^h^N0Q2Jgd2
+!s85 0
+!s101 -O0
+vtest_cp1
+IQbW4X5bW@gcd[:o@5RR523
+VWOeoWETMOoX1?NRXIElLe2
+w1419711285
+8C:/Actelprj/3116004982_zsy/stimulus/test_cp1.v
+FC:/Actelprj/3116004982_zsy/stimulus/test_cp1.v
+L0 3
+R4
+r1
+31
+R5
+!s100 `3HN7Ye`:J8:OlYUZnWbJ3
+!s85 0
+!s101 -O0
+Z9 !s92 +incdir+C:/Actelprj/3116004982_zsy/stimulus +incdir+C:/Actelprj/3116004982_zsy/component/work/zsy_cp1 -work postsynth -O0
+vtestbench
+!s100 PdLBz?eS5i0P;kGfn_E340
+Iaigz700c[lZzI<59X<nVb0
+VI0hf]9AUT4Y5kc[AFJ7Ok1
+w1482858241
+8C:/Actelprj/3116004982_zsy/component/work/zsy_cp1/testbench.v
+FC:/Actelprj/3116004982_zsy/component/work/zsy_cp1/testbench.v
+L0 12
+R4
+r1
+!s85 0
+31
+!s101 -O0
+R5
+R9
+vzsy_cp1
+IQMiB1DZ9oK09iV=^9O`@A3
+VanK5nFHi>Ui[oj21NID`Q3
+R6
+R7
+R8
+L0 149
+R4
+r1
+31
+R5
+!s100 lmzEfnAT`0:7:hEz;U>cd0
+!s85 0
+!s101 -O0

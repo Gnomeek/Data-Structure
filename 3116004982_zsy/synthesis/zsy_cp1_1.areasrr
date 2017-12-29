@@ -1,0 +1,64 @@
+----------------------------------------------------------------------
+Report for cell zsy_cp1.verilog
+                                          Cell usage:
+                               cell       count     area    count*area
+                             CLKBUF         1       0.0        0.0
+                                GND         1       0.0        0.0
+                              HC161         1      17.0       17.0
+                             HC4511         1      24.0       24.0
+                               HC85         1       5.0        5.0
+                              INBUF         9       0.0        0.0
+                             OUTBUF        12       0.0        0.0
+                                VCC         1       0.0        0.0
+                            
+                         TOTAL             27                 46.0
+----------------------------------------------------------------------
+Report for cell HC161.netlist
+     Instance path:  HC161_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                               AND3         1       1.0        1.0
+                               DFN1         4       1.0        4.0
+                                GND         1       0.0        0.0
+                                MX2         3       1.0        3.0
+                               MX2B         1       1.0        1.0
+                              NOR2B         5       1.0        5.0
+                                VCC         1       0.0        0.0
+                               XOR2         3       1.0        3.0
+                            
+                         TOTAL             19                 17.0
+----------------------------------------------------------------------
+Report for cell HC4511.netlist
+     Instance path:  HC4511_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                               AO1D         1       1.0        1.0
+                               AXO7         1       1.0        1.0
+                                GND         1       0.0        0.0
+                               MX2A         1       1.0        1.0
+                              NOR2A         1       1.0        1.0
+                               NOR3         1       1.0        1.0
+                              NOR3C         2       1.0        2.0
+                                OA1         1       1.0        1.0
+                               OA1B         3       1.0        3.0
+                               OA1C         1       1.0        1.0
+                               OR2A         4       1.0        4.0
+                               OR3A         2       1.0        2.0
+                               OR3B         2       1.0        2.0
+                               OR3C         3       1.0        3.0
+                                VCC         1       0.0        0.0
+                               XOR2         1       1.0        1.0
+                            
+                         TOTAL             26                 24.0
+----------------------------------------------------------------------
+Report for cell HC85.netlist
+     Instance path:  HC85_0
+                                          Cell usage:
+                               cell       count     area    count*area
+                                GND         1       0.0        0.0
+                                OR3         1       1.0        1.0
+                                VCC         1       0.0        0.0
+                                XO1         1       1.0        1.0
+                               XOR2         3       1.0        3.0
+                            
+                         TOTAL              7                  5.0

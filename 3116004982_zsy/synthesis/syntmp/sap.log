@@ -1,0 +1,12 @@
+Synopsys Actel Technology Mapper, Version map500act, Build 058R, Built Jan 18 2010 09:16:23
+Copyright (C) 1994-2010, Synopsys Inc.  All Rights Reserved
+Product Version D-2009.12A
+@N: MF249 |Running in 32-bit mode.
+@N: MF258 |Gated clock conversion disabled 
+@W|Ignoring synthesis effort setting for the design. This is not supported by the current technology.
+
+@N: BN225 |Writing default property annotation file C:\Actelprj\3116004982_zsy\synthesis\zsy_cp1_1.sap.
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Wed Dec 28 03:34:03 2016
+
+###########################################################]
