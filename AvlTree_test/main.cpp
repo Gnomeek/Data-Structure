@@ -1,41 +1,15 @@
 ﻿#include <stdio.h>
 #include <malloc.h>
 #include <stdlib.h>
+#include <main.h>
 
-#define OK 1
-#define ERROR 0
-#define TRUE 1
-#define FALSE 0
-#define OVERFLOW -2
-
-typedef int Status;
-typedef int ElementType;    //元素类型为整形类型
-
-/*储存平衡二叉树结构声明*/
-typedef struct AvlNode{
-    ElementType element;    //数据域
-    struct AvlNode *left;   //左右孩子指针域
-    struct AvlNode *right;
-    int height;             //树高
-}AvlNode,*AvlTree;
-
-/*存放输入数据的数组结构体*/
-typedef struct ArrayNode{
-    ElementType element;    //存放记录的结点元素值
-    ArrayNode *next;        //指向下一个结点
-}ArrayNode, *Array;
-
-/*链队列结构体*/
-typedef struct LQNode{
-    AvlTree element;        //存放遍历时树的指针
-    struct LQNode *next;    //指向下一个结点
-}LQNode, *QueuePtr;
-
-/*队列结点结构体*/
-typedef struct{
-    QueuePtr front;         //队头指针
-    QueuePtr rear;          //队尾指针
-}LQueue;
+int main(){
+    AvlNode *T1=(AvlNode*)malloc(sizeof(AvlNode));
+    T1=NULL;
+    AvlTree T2=(AvlNode*)malloc(sizeof(AvlNode));
+    T2=NULL;
+    AvlTree_Test(T1,T2);
+}
 
 /*初始化链队列*/
 Status LQueue_Init(LQueue &Q){
@@ -86,24 +60,6 @@ int MAX(int T1,int T2){
     return T1>T2 ? T1 : T2;
 }
 
-/*寻找最小结点*/
-AvlTree AvlTree_Min(AvlTree &T){
-    if(NULL==T)
-        return NULL;
-    while(T->left!=NULL)
-        T=T->left;      //找到了树最左下角的结点即为最小结点
-    return T;
-}
-
-/*寻找最大结点*/
-AvlTree AvlTree_Max(AvlTree &T){
-    if(NULL==T)
-        return NULL;
-    while(T->right!=NULL)
-        T=T->right;     //找到了树最右下角的结点即为最大结点
-    return T;
-}
-
 /*右旋LL*/
 AvlTree SingleRotate_Left(AvlTree &T2){
     AvlTree T1=(AvlNode*)malloc(sizeof(AvlNode));
@@ -147,14 +103,7 @@ AvlTree AvlTree_Find(ElementType x,AvlTree &T){
         else
             T=T->right;
     }
-    return T;       //非递归写法
-    /*递归写法
-    if(x==T->element||T==NULL)
-        return T;
-    else if(x<T->element)
-        return AvlTree_Find(x,T->left);
-    else
-        return AvlTree_Find(x,T->right);*/
+    return T;
 }
 
 /*创建结点*/
@@ -222,9 +171,7 @@ Status AvlTree_Delete(ElementType X,AvlTree &T){
             if (AvlTree_Height(T->left)>AvlTree_Height(T->right)){
                 pre=T->left;
                 while(pre->right)  //寻找前驱结点pre
-                {
                     pre=pre->right;
-                }
                 T->element=pre->element;    //用pre替换T
                 AvlTree_Delete(pre->element,T->left);//删除pre
             }
@@ -275,30 +222,12 @@ Status AvlTree_Delete(ElementType X,AvlTree &T){
     }
 }
 
-/*先序遍历*/
-Status AvlTree_PreOrderTraverse(AvlTree &T){
-    if(T!=NULL){
-        printf("%d ",T->element);
-        AvlTree_PreOrderTraverse(T->left);
-        AvlTree_PreOrderTraverse(T->right);
-    }
-}
-
 /*中序遍历*/
 Status AvlTree_InOrderTraverse(AvlTree &T){
     if(T!=NULL){
-        AvlTree_PreOrderTraverse(T->left);
+        AvlTree_InOrderTraverse(T->left);
         printf("%d ",T->element);
-        AvlTree_PreOrderTraverse(T->right);
-    }
-}
-
-/*后序遍历*/
-Status AvlTree_PostOrderTraverse(AvlTree &T){
-    if(T!=NULL){
-        AvlTree_PreOrderTraverse(T->left);
-        AvlTree_PreOrderTraverse(T->right);
-        printf("%d ",T->element);
+        AvlTree_InOrderTraverse(T->right);
     }
 }
 
@@ -329,8 +258,6 @@ AvlTree Create(AvlTree &T){
     printf("Create Successfully.Press any key to return.\n");
     getchar();
     getchar();
-    //return OK;
-
 }
 
 /*将树转化为数组*/
@@ -392,19 +319,18 @@ AvlTree AvlTree_Merge(AvlTree &T1,AvlTree &T2){
 }
 
 /*分裂*/
-Status AvlTree_Spilt(AvlTree &T,AvlTree &T1,AvlTree &T2,ElementType x){
+Status AvlTree_Spilt(AvlTree &T1,AvlTree &T2,ElementType x){
     ArrayNode *a=(ArrayNode*)malloc(sizeof(ArrayNode));
-    a=ChangeTreeToArray(T);
-    if(T==NULL)
+    a=ChangeTreeToArray(T1);
+    if(T1==NULL)
         return FALSE;
     else{
         while(a!=NULL){
-            if(a->element<=x){
-                AvlTree_Insert(a->element,T1);
+            if(a->element<=x)
                 a=a->next;
-            }
             else{
                 AvlTree_Insert(a->element,T2);
+                AvlTree_Delete(a->element,T1);
                 a=a->next;
             }
         }
@@ -429,8 +355,6 @@ Status AvlTree_Print(AvlTree &T, int dep){
 Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
     int n,m,k,i,j,o,choose,cho_m,cho_s,x;
     AvlTree TEMP=(AvlNode*)malloc(sizeof(AvlNode));
-    AvlTree T3=(AvlNode*)malloc(sizeof(AvlNode));
-    T3=NULL;
     while(1){
         system("cls");
         printf("******************Tree Table**********************\n");
@@ -441,12 +365,8 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
             printf("******************Tree Shape**********************\n");
             AvlTree_Print(T1,0);
             printf("****************Tree Traverse*********************\n");
-            printf(" PreOrderTraverse :");
-            AvlTree_PreOrderTraverse(T1);
-            printf("\n  InOrderTraverse :");
+            printf("\InOrderTraverse :");
             AvlTree_InOrderTraverse(T1);
-            printf("\nPostOrderTraverse :");
-            AvlTree_PostOrderTraverse(T1);
         }
         printf("\n************************T2************************\n\n");
         if(!T2)
@@ -455,26 +375,8 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
             printf("******************Tree Shape**********************\n");
             AvlTree_Print(T2,0);
             printf("****************Tree Traverse*********************\n");
-            printf(" PreOrderTraverse :");
-            AvlTree_PreOrderTraverse(T2);
-            printf("\n  InOrderTraverse :");
+            printf("InOrderTraverse :");
             AvlTree_InOrderTraverse(T2);
-            printf("\nPostOrderTraverse :");
-            AvlTree_PostOrderTraverse(T2);
-        }
-        printf("\n************************T3************************\n\n");
-        if(!T2)
-            printf("Now T3 is NULL.\n");
-        else{
-            printf("******************Tree Shape**********************\n");
-            AvlTree_Print(T3,0);
-            printf("****************Tree Traverse*********************\n");
-            printf(" PreOrderTraverse :");
-            AvlTree_PreOrderTraverse(T3);
-            printf("\n  InOrderTraverse :");
-            AvlTree_InOrderTraverse(T3);
-            printf("\nPostOrderTraverse :");
-            AvlTree_PostOrderTraverse(T3);
         }
         printf("\n******************Operation Table*****************\n");
         printf("\n T1   1.Create 2.Insert 3.Delete 4.Find 5.Destroy\n");
@@ -534,7 +436,7 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
             case 8:{
                 printf("Enter the element_key you want to delete :");
                 scanf("%d",&j);
-                AvlTree_Delete(m,T2);
+                AvlTree_Delete(j,T2);
                 getchar();
                 getchar();
                 break;
@@ -583,10 +485,10 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
 			    printf("Enter the spilt key :");
 			    scanf("%d",&x);
 			    if(cho_s==1){
-                    AvlTree_Spilt(T1,T3,T2,x);
+                    AvlTree_Spilt(T1,T2,x);
 			    }
 			    if(cho_s==2){
-                    AvlTree_Spilt(T2,T1,T3,x);
+                    AvlTree_Spilt(T2,T1,x);
 			    }
 			    printf("Split Successfully.");
                 getchar();
@@ -595,12 +497,4 @@ Status AvlTree_Test(AvlTree &T1,AvlTree &T2){
 			}
         }
     }
-}
-
-int main(){
-    AvlNode *T1=(AvlNode*)malloc(sizeof(AvlNode));
-    T1=NULL;
-    AvlTree T2=(AvlNode*)malloc(sizeof(AvlNode));
-    T2=NULL;
-    AvlTree_Test(T1,T2);
 }

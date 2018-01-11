@@ -2,10 +2,39 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="main.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="-1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2528" topLine="562" />
+			<Cursor1 position="7458" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="5" />
+			<Collapse line="14" />
+			<Collapse line="21" />
+			<Collapse line="36" />
+			<Collapse line="50" />
+			<Collapse line="58" />
+			<Collapse line="63" />
+			<Collapse line="74" />
+			<Collapse line="85" />
+			<Collapse line="91" />
+			<Collapse line="97" />
+			<Collapse line="109" />
+			<Collapse line="123" />
+			<Collapse line="156" />
+			<Collapse line="225" />
+			<Collapse line="234" />
+			<Collapse line="246" />
+			<Collapse line="263" />
+			<Collapse line="310" />
+			<Collapse line="321" />
+			<Collapse line="341" />
+			<Collapse line="354" />
+		</Folding>
+	</File>
+	<File name="main.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="16" topLine="0" />
 		</Cursor>
 	</File>
-	<EditorTabsLayout layout="@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=957;besth=485;minw=957;minh=485;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|" />
+	<EditorTabsLayout layout="0dfcf9b85a57674b000040af00000002=*0;AvlTree_test:main.cpp,1;AvlTree_test:main.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=832;besth=354;minw=832;minh=354;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0dfcf9b85a57674b000040af00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
 </CodeBlocks_layout_file>
