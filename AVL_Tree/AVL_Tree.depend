@@ -1,6 +1,0 @@
-# depslib dependency file v1.0
-1514026605 source:d:\c++\data-structure\avl_tree\main.c
-	<stdio.h>
-	<malloc.h>
-	<stdlib.h>
-
